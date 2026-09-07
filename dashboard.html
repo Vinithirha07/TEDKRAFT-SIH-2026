@@ -1,0 +1,2811 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TEDKRAFT — Artisan Dashboard</title>
+
+
+    <!-- MAIN WEBSITE CSS -->
+    <link rel="stylesheet" href="style.css">
+
+    <!-- DASHBOARD CSS -->
+    <link rel="stylesheet" href="dashboard.css">
+
+
+    <!-- =====================================================
+         DASHBOARD ONLY FIXES
+         DO NOT CHANGE THE GLOBAL DOMAIN SWITCHER
+    ====================================================== -->
+
+    <style>
+
+        /* =================================================
+           DASHBOARD MAIN
+        ================================================= */
+
+        .dashboard-main {
+
+            margin-left: 250px;
+
+            width: calc(100% - 250px);
+
+            min-height: 100vh;
+
+            padding: 100px 55px 70px;
+
+            overflow-x: hidden;
+
+        }
+
+
+        /* =================================================
+           DOMAIN SWITCHER
+
+           IMPORTANT:
+           It stays FIXED at top-right,
+           exactly like the homepage/customer page.
+        ================================================= */
+
+        .dashboard-main .domain-switcher {
+
+            position: fixed !important;
+
+            top: 12px !important;
+
+            right: 30px !important;
+
+            width: 275px !important;
+
+            height: 58px !important;
+
+            display: flex !important;
+
+            align-items: stretch !important;
+
+            margin: 0 !important;
+
+            padding: 0 !important;
+
+            background: #f6ead5 !important;
+
+            border: 1px solid #c98b20 !important;
+
+            z-index: 9999 !important;
+
+        }
+
+
+        .dashboard-main .domain-option {
+
+            flex: 1 !important;
+
+            height: 100% !important;
+
+            min-height: 100% !important;
+
+            display: flex !important;
+
+            align-items: center !important;
+
+            justify-content: center !important;
+
+            gap: 8px !important;
+
+            padding: 0 !important;
+
+            margin: 0 !important;
+
+            border-right: 1px solid #c98b20 !important;
+
+            border-left: none !important;
+
+            border-top: none !important;
+
+            border-bottom: none !important;
+
+            background: transparent !important;
+
+            color: #4b1118 !important;
+
+            text-decoration: none !important;
+
+            font-family: "Cinzel", serif !important;
+
+            font-size: 12px !important;
+
+            font-weight: 700 !important;
+
+            box-sizing: border-box !important;
+
+        }
+
+
+        .dashboard-main .domain-option:last-child {
+
+            border-right: none !important;
+
+        }
+
+
+        .dashboard-main .domain-option.active {
+
+            background: #ead9bd !important;
+
+            color: #4b1118 !important;
+
+            box-shadow:
+                inset 0 0 0 1px #c98b20 !important;
+
+        }
+
+
+        .dashboard-main .domain-option:hover {
+
+            background: #ead9bd !important;
+
+        }
+
+
+        .dashboard-main .domain-option span {
+
+            font-size: 14px !important;
+
+        }
+
+
+        /* =================================================
+           DASHBOARD CONTENT WIDTH
+        ================================================= */
+
+        .dashboard-header,
+        .artisan-profile,
+        .dashboard-stats,
+        .dashboard-two-column,
+        .performance-panel,
+        .dashboard-main > .dashboard-panel,
+        .ai-recommendation {
+
+            width: 100%;
+
+            max-width: 1200px;
+
+            margin-left: auto;
+
+            margin-right: auto;
+
+        }
+
+
+        /* =================================================
+           HEADER
+        ================================================= */
+
+        .dashboard-header {
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-between;
+
+            gap: 35px;
+
+            margin-bottom: 30px;
+
+        }
+
+
+        .dashboard-header > div {
+
+            flex: 1;
+
+            min-width: 0;
+
+        }
+
+
+        .dashboard-header h1 {
+
+            margin-bottom: 14px;
+
+            line-height: 1.1;
+
+        }
+
+
+        .dashboard-header p {
+
+            max-width: 680px;
+
+            line-height: 1.7;
+
+        }
+
+
+        .dashboard-add-btn {
+
+            flex-shrink: 0;
+
+            min-height: 48px;
+
+            padding: 12px 22px;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =================================================
+           ARTISAN PROFILE
+        ================================================= */
+
+        .artisan-profile {
+
+            display: grid;
+
+            grid-template-columns:
+                72px
+                minmax(0, 1fr)
+                auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+            min-height: 105px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .artisan-avatar {
+
+            width: 72px;
+
+            height: 72px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .artisan-details {
+
+            min-width: 0;
+
+        }
+
+
+        .artisan-details h2 {
+
+            margin: 4px 0 5px;
+
+        }
+
+
+        .artisan-details p {
+
+            margin: 0;
+
+            line-height: 1.5;
+
+        }
+
+
+        .verified-badge {
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =================================================
+           STATISTICS
+        ================================================= */
+
+        .dashboard-stats {
+
+            display: grid;
+
+            grid-template-columns:
+                repeat(4, minmax(0, 1fr));
+
+            gap: 18px;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .stat-card {
+
+            min-width: 0;
+
+            min-height: 150px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            justify-content: center;
+
+            padding: 24px 22px;
+
+        }
+
+
+        .stat-card > span {
+
+            display: block;
+
+            line-height: 1.35;
+
+        }
+
+
+        .stat-card > strong {
+
+            display: block;
+
+            margin: 8px 0 5px;
+
+            line-height: 1.1;
+
+        }
+
+
+        .stat-card > small {
+
+            display: block;
+
+            line-height: 1.4;
+
+        }
+
+
+        /* =================================================
+           PRODUCTS + AI
+        ================================================= */
+
+        .dashboard-two-column {
+
+            display: grid;
+
+            grid-template-columns:
+                minmax(0, 1.35fr)
+                minmax(340px, 0.85fr);
+
+            gap: 24px;
+
+            align-items: start;
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .dashboard-two-column > .dashboard-panel {
+
+            width: 100%;
+
+            min-width: 0;
+
+            margin: 0;
+
+        }
+
+
+        .dashboard-panel {
+
+            min-width: 0;
+
+            overflow: hidden;
+
+        }
+
+
+        .panel-header {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: space-between;
+
+            gap: 20px;
+
+        }
+
+
+        .panel-header > div {
+
+            min-width: 0;
+
+        }
+
+
+        .panel-header button {
+
+            flex-shrink: 0;
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =================================================
+           PRODUCTS
+        ================================================= */
+
+        .dashboard-products {
+
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 14px;
+
+        }
+
+
+        .dashboard-product {
+
+            display: grid;
+
+            grid-template-columns:
+                92px
+                minmax(0, 1fr);
+
+            align-items: center;
+
+            gap: 16px;
+
+            min-width: 0;
+
+        }
+
+
+        .dashboard-product img {
+
+            width: 92px;
+
+            height: 92px;
+
+            object-fit: cover;
+
+            display: block;
+
+        }
+
+
+        .dashboard-product > div {
+
+            min-width: 0;
+
+        }
+
+
+        .dashboard-product h3 {
+
+            margin: 5px 0;
+
+            line-height: 1.3;
+
+            overflow-wrap: anywhere;
+
+        }
+
+
+        .dashboard-product p {
+
+            margin: 0 0 5px;
+
+        }
+
+
+        /* =================================================
+           AI INSIGHTS
+        ================================================= */
+
+        .ai-insight {
+
+            display: grid;
+
+            grid-template-columns:
+                48px
+                minmax(0, 1fr);
+
+            align-items: start;
+
+            gap: 14px;
+
+        }
+
+
+        .insight-icon {
+
+            width: 48px;
+
+            height: 48px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .ai-insight > div:last-child {
+
+            min-width: 0;
+
+        }
+
+
+        .ai-insight p {
+
+            line-height: 1.55;
+
+        }
+
+
+        /* =================================================
+           PERFORMANCE
+        ================================================= */
+
+        .performance-panel {
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .performance-chart {
+
+            width: 100%;
+
+            min-height: 220px;
+
+            display: flex;
+
+            align-items: flex-end;
+
+            justify-content: space-around;
+
+            gap: 18px;
+
+            padding: 28px 20px 8px;
+
+        }
+
+
+        .chart-column {
+
+            flex: 1;
+
+            max-width: 120px;
+
+            min-width: 45px;
+
+            height: 180px;
+
+            display: flex;
+
+            flex-direction: column;
+
+            align-items: center;
+
+            justify-content: flex-end;
+
+            gap: 10px;
+
+        }
+
+
+        .chart-column span {
+
+            display: block;
+
+            width: min(52px, 70%);
+
+            min-height: 8px;
+
+        }
+
+
+        /* =================================================
+           ACTIVITY
+        ================================================= */
+
+        .dashboard-main > .dashboard-panel {
+
+            margin-bottom: 28px;
+
+        }
+
+
+        .activity-item {
+
+            display: grid;
+
+            grid-template-columns:
+                28px
+                minmax(0, 1fr)
+                auto;
+
+            align-items: center;
+
+            gap: 12px;
+
+        }
+
+
+        .activity-item p {
+
+            min-width: 0;
+
+            margin: 0;
+
+            line-height: 1.45;
+
+        }
+
+
+        .activity-item small {
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =================================================
+           AI RECOMMENDATION
+        ================================================= */
+
+        .ai-recommendation {
+
+            display: grid;
+
+            grid-template-columns:
+                55px
+                minmax(0, 1fr)
+                auto;
+
+            align-items: center;
+
+            gap: 20px;
+
+        }
+
+
+        .recommendation-icon {
+
+            width: 55px;
+
+            height: 55px;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+        }
+
+
+        .ai-recommendation > div:nth-child(2) {
+
+            min-width: 0;
+
+        }
+
+
+        .ai-recommendation button {
+
+            white-space: nowrap;
+
+        }
+
+
+        /* =================================================
+           TABLET
+        ================================================= */
+
+        @media (max-width: 1100px) {
+
+            .dashboard-main {
+
+                margin-left: 250px;
+
+                width: calc(100% - 250px);
+
+                padding-left: 35px;
+
+                padding-right: 35px;
+
+            }
+
+
+            .dashboard-stats {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .dashboard-two-column {
+
+                grid-template-columns: 1fr;
+
+            }
+
+        }
+
+
+        /* =================================================
+           SMALL TABLET
+        ================================================= */
+
+        @media (max-width: 800px) {
+
+            .dashboard-main {
+
+                width: 100%;
+
+                margin-left: 0;
+
+                padding:
+                    95px
+                    22px
+                    50px;
+
+            }
+
+
+            .dashboard-main .domain-switcher {
+
+                top: 10px !important;
+
+                right: 10px !important;
+
+                width: 230px !important;
+
+                height: 50px !important;
+
+            }
+
+
+            .dashboard-header {
+
+                flex-direction: column;
+
+                align-items: flex-start;
+
+                gap: 20px;
+
+            }
+
+
+            .dashboard-add-btn {
+
+                width: 100%;
+
+            }
+
+
+            .artisan-profile {
+
+                grid-template-columns:
+                    58px
+                    minmax(0, 1fr);
+
+                gap: 14px;
+
+                padding: 20px;
+
+            }
+
+
+            .artisan-avatar {
+
+                width: 58px;
+
+                height: 58px;
+
+            }
+
+
+            .verified-badge {
+
+                grid-column: 1 / -1;
+
+                justify-self: start;
+
+            }
+
+
+            .dashboard-stats {
+
+                grid-template-columns:
+                    repeat(2, minmax(0, 1fr));
+
+            }
+
+
+            .ai-recommendation {
+
+                grid-template-columns:
+                    48px
+                    minmax(0, 1fr);
+
+            }
+
+
+            .ai-recommendation button {
+
+                grid-column: 1 / -1;
+
+                width: 100%;
+
+            }
+
+        }
+
+
+        /* =================================================
+           MOBILE
+        ================================================= */
+
+        @media (max-width: 560px) {
+
+            .dashboard-main {
+
+                padding-left: 15px;
+
+                padding-right: 15px;
+
+            }
+
+
+            .dashboard-main .domain-switcher {
+
+                width: 220px !important;
+
+                height: 48px !important;
+
+            }
+
+
+            .dashboard-stats {
+
+                grid-template-columns: 1fr;
+
+            }
+
+
+            .artisan-profile {
+
+                grid-template-columns: 1fr;
+
+                text-align: center;
+
+                justify-items: center;
+
+            }
+
+
+            .verified-badge {
+
+                grid-column: auto;
+
+                justify-self: center;
+
+            }
+
+
+            .dashboard-product {
+
+                grid-template-columns:
+                    75px
+                    minmax(0, 1fr);
+
+            }
+
+
+            .dashboard-product img {
+
+                width: 75px;
+
+                height: 75px;
+
+            }
+
+
+            .activity-item {
+
+                grid-template-columns:
+                    25px
+                    minmax(0, 1fr);
+
+            }
+
+
+            .activity-item small {
+
+                grid-column: 2;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+<!-- =========================================================
+     TEDKRAFT BOOT SCREEN
+========================================================= -->
+
+<div id="tedkraftBoot" class="tedkraft-boot">
+
+    <!-- LEFT PAPER -->
+    <div class="boot-paper boot-paper-left"></div>
+
+    <!-- RIGHT PAPER -->
+    <div class="boot-paper boot-paper-right"></div>
+
+
+    <!-- CENTER BRAND -->
+    <div class="boot-brand">
+
+        <div class="boot-symbol">T</div>
+
+        <h1>TEDKRAFT</h1>
+
+        <div class="boot-line">
+            <span></span>
+            <p>INDIAN CRAFT × MODERN TECHNOLOGY</p>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- INITIALIZATION STATUS -->
+    <div class="boot-status">
+
+        <div class="boot-status-label">
+            <span id="bootStatus">INITIALIZING</span>
+            <span id="bootPercent">0%</span>
+        </div>
+
+        <div class="boot-progress">
+            <div id="bootProgressBar"></div>
+        </div>
+
+    </div>
+
+
+    <!-- SMALL CHANGING TEXT -->
+    <div class="boot-message" id="bootMessage">
+        Preserving India's handmade heritage.
+    </div>
+
+
+    <!-- INDIAN DECORATIVE ELEMENT -->
+    <div class="boot-decoration">
+
+        <div class="mandala-ring ring-one"></div>
+        <div class="mandala-ring ring-two"></div>
+
+        <div class="mandala-center">✦</div>
+
+    </div>
+
+</div>
+
+<!-- =========================================================
+     SIDEBAR
+========================================================= -->
+
+<aside class="sidebar">
+
+
+    <!-- BRAND -->
+
+    <div class="brand">
+
+        <div class="brand-symbol">
+            T
+        </div>
+
+        <div class="brand-name">
+            TEDKRAFT
+        </div>
+
+        <div class="brand-subtitle">
+            AI FOR ARTISANS
+        </div>
+
+        <div class="brand-star">
+            ✦
+        </div>
+
+    </div>
+
+
+
+    <!-- NAVIGATION -->
+
+    <nav class="navigation">
+
+
+        <a
+            href="index.html#home"
+            class="nav-link"
+        >
+
+            <span>⌂</span>
+
+            <span>
+                Home
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html#problem"
+            class="nav-link"
+        >
+
+            <span>◇</span>
+
+            <span>
+                The Problem
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html#features"
+            class="nav-link"
+        >
+
+            <span>✦</span>
+
+            <span>
+                AI Features
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html#workflow"
+            class="nav-link"
+        >
+
+            <span>◎</span>
+
+            <span>
+                How It Works
+            </span>
+
+        </a>
+
+
+        <a
+            href="index.html#market"
+            class="nav-link"
+        >
+
+            <span>♧</span>
+
+            <span>
+                Market Linkage
+            </span>
+
+        </a>
+
+
+        <a
+            href="dashboard.html"
+            class="nav-link active"
+        >
+
+            <span>
+                ▣
+            </span>
+
+            <span>
+                Dashboard
+            </span>
+
+        </a>
+
+
+    </nav>
+
+
+
+    <!-- SIDEBAR BOTTOM -->
+
+    <div class="sidebar-bottom">
+
+
+        <div class="dashboard-language">
+
+            <p>
+                LANGUAGE
+            </p>
+
+
+            <div class="language-buttons">
+
+
+                <button
+                    type="button"
+                    data-language="ta"
+                    onclick="changeDashboardLanguage('ta')"
+                >
+                    தமிழ்
+                </button>
+
+
+                <button
+                    type="button"
+                    data-language="en"
+                    onclick="changeDashboardLanguage('en')"
+                >
+                    English
+                </button>
+
+
+                <button
+                    type="button"
+                    data-language="hi"
+                    onclick="changeDashboardLanguage('hi')"
+                >
+                    हिन्दी
+                </button>
+
+
+                <button
+                    type="button"
+                    data-language="kn"
+                    onclick="changeDashboardLanguage('kn')"
+                >
+                    ಕನ್ನಡ
+                </button>
+
+
+                <button
+                    type="button"
+                    data-language="te"
+                    onclick="changeDashboardLanguage('te')"
+                >
+                    తెలుగు
+                </button>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="sidebar-decoration">
+            ✧
+        </div>
+
+
+        <div class="sidebar-growth">
+            READY TO GROW?
+        </div>
+
+
+        <a
+            href="index.html"
+            class="sidebar-button"
+        >
+            TRY TEDKRAFT →
+        </a>
+
+
+    </div>
+
+
+</aside>
+
+
+
+<!-- =========================================================
+     MAIN DASHBOARD
+========================================================= -->
+
+<main class="dashboard-main">
+
+
+    <!-- =====================================================
+         ARTISAN / CUSTOMER SWITCHER
+    ====================================================== -->
+
+    <div class="domain-switcher">
+
+
+        <a
+            href="dashboard.html"
+            class="domain-option active"
+        >
+
+            <span>
+                🧑‍🎨
+            </span>
+
+            ARTISAN
+
+        </a>
+
+
+        <a
+            href="customer.html"
+            class="domain-option"
+        >
+
+            <span>
+                🛍
+            </span>
+
+            CUSTOMER
+
+        </a>
+
+
+    </div>
+
+
+
+    <!-- =====================================================
+         HEADER
+    ====================================================== -->
+
+    <header class="dashboard-header">
+
+
+        <div>
+
+
+            <span
+                class="dashboard-eyebrow"
+                data-dash="dashboardEyebrow"
+            >
+                06 — ARTISAN DASHBOARD
+            </span>
+
+
+            <h1>
+
+                <span data-dash="heroCraft">
+                    Your craft.
+                </span>
+
+                <br>
+
+                <strong data-dash="heroBusiness">
+                    Your business.
+                </strong>
+
+            </h1>
+
+
+            <p data-dash="heroDescription">
+
+                A simple view of your products,
+                market activity and TEDKRAFT AI
+                recommendations.
+
+            </p>
+
+
+        </div>
+
+
+        <button
+            type="button"
+            class="dashboard-add-btn"
+            onclick="goToProductStudio()"
+            data-dash="addProduct"
+        >
+            + ADD PRODUCT
+        </button>
+
+
+    </header>
+
+
+
+    <!-- =====================================================
+         ARTISAN PROFILE
+    ====================================================== -->
+
+    <section class="artisan-profile">
+
+
+        <div class="artisan-avatar">
+            M
+        </div>
+
+
+      <div class="details">
+
+    <span>
+        MATERIAL
+        <b id="catalogueMaterial">Bamboo</b>
+    </span>
+
+    <span>
+        CRAFT
+        <b id="catalogueCraft">Hand Weaving</b>
+    </span>
+
+    <span>
+        TIME
+        <b id="catalogueTime">Not specified</b>
+    </span>
+
+</div>
+
+        <div
+            class="verified-badge"
+            data-dash="verified"
+        >
+            ✓ VERIFIED ARTISAN
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         STATISTICS
+    ====================================================== -->
+
+    <section class="dashboard-stats">
+
+
+        <div class="stat-card">
+
+            <span data-dash="products">
+                PRODUCTS UPLOADED
+            </span>
+
+            <strong
+                class="counter"
+                data-target="12"
+            >
+                0
+            </strong>
+
+            <small data-dash="productsGrowth">
+                +3 this month
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span data-dash="views">
+                MARKET VIEWS
+            </span>
+
+            <strong
+                class="counter"
+                data-target="1248"
+            >
+                0
+            </strong>
+
+            <small data-dash="viewsGrowth">
+                +24% this month
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span data-dash="buyers">
+                POTENTIAL BUYERS
+            </span>
+
+            <strong
+                class="counter"
+                data-target="37"
+            >
+                0
+            </strong>
+
+            <small data-dash="buyersGrowth">
+                8 new opportunities
+            </small>
+
+        </div>
+
+
+        <div class="stat-card">
+
+            <span data-dash="sales">
+                ESTIMATED SALES
+            </span>
+
+            <strong>
+                ₹18,500
+            </strong>
+
+            <small data-dash="salesTime">
+                This month
+            </small>
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         PRODUCTS + AI INSIGHTS
+    ====================================================== -->
+
+    <section class="dashboard-two-column">
+
+
+        <!-- ================= PRODUCTS ================= -->
+
+        <section class="dashboard-panel">
+
+
+            <div class="panel-header">
+
+
+                <div>
+
+                    <span data-dash="myProducts">
+                        MY PRODUCTS
+                    </span>
+
+                    <h2 data-dash="uploadedProducts">
+                        Uploaded Products
+                    </h2>
+
+                </div>
+
+
+                <button
+                    type="button"
+                    onclick="goToProductStudio()"
+                    data-dash="add"
+                >
+                    + ADD
+                </button>
+
+
+            </div>
+
+
+
+            <div class="dashboard-products">
+
+
+                <!-- PRODUCT 1 -->
+
+                <article class="dashboard-product">
+
+
+                    <img
+                        src="bamboo-basket.png"
+                        alt="Handwoven Bamboo Basket"
+                    >
+
+
+                    <div>
+
+                        <span data-dash="homeDecor">
+                            HOME DÉCOR
+                        </span>
+
+                        <h3 data-dash="basket">
+                            Handwoven Bamboo Basket
+                        </h3>
+
+                        <p data-dash="aiCatalogue">
+                            AI Catalogue ✓
+                        </p>
+
+                        <strong>
+                            ₹750 – ₹850
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- PRODUCT 2 -->
+
+                <article class="dashboard-product">
+
+
+                    <img
+                        src="bamboo-products.jpg"
+                        alt="Natural Bamboo Storage Set"
+                    >
+
+
+                    <div>
+
+                        <span data-dash="bambooCraft">
+                            BAMBOO CRAFT
+                        </span>
+
+                        <h3 data-dash="storage">
+                            Natural Bamboo Storage Set
+                        </h3>
+
+                        <p data-dash="aiCatalogue">
+                            AI Catalogue ✓
+                        </p>
+
+                        <strong>
+                            ₹900 – ₹1,200
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- PRODUCT 3 -->
+
+                <article class="dashboard-product">
+
+
+                    <img
+                        src="pottery.png"
+                        alt="Traditional Clay Pot"
+                    >
+
+
+                    <div>
+
+                        <span data-dash="terracotta">
+                            TERRACOTTA
+                        </span>
+
+                        <h3 data-dash="clayPot">
+                            Traditional Clay Pot
+                        </h3>
+
+                        <p data-dash="aiCatalogue">
+                            AI Catalogue ✓
+                        </p>
+
+                        <strong>
+                            ₹450 – ₹600
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+
+                <!-- PRODUCT 4 -->
+
+                <article class="dashboard-product">
+
+
+                    <img
+                        src="handloom.png"
+                        alt="Traditional Cotton Weave"
+                    >
+
+
+                    <div>
+
+                        <span data-dash="handloom">
+                            HANDLOOM
+                        </span>
+
+                        <h3 data-dash="cottonWeave">
+                            Traditional Cotton Weave
+                        </h3>
+
+                        <p data-dash="aiCatalogue">
+                            AI Catalogue ✓
+                        </p>
+
+                        <strong>
+                            ₹1,200 – ₹1,500
+                        </strong>
+
+                    </div>
+
+
+                </article>
+
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= AI INSIGHTS ================= -->
+
+        <section class="dashboard-panel">
+
+
+            <div class="panel-header">
+
+                <div>
+
+                    <span data-dash="tedkraftAI">
+                        TEDKRAFT AI
+                    </span>
+
+                    <h2 data-dash="businessInsights">
+                        Business Insights
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- INSIGHT 1 -->
+
+            <div class="ai-insight">
+
+
+                <div class="insight-icon">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <strong data-dash="highDemand">
+                        HIGH DEMAND DETECTED
+                    </strong>
+
+
+                    <p data-dash="highDemandText">
+
+                        Bamboo home décor is receiving
+                        increased interest this month.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INSIGHT 2 -->
+
+            <div class="ai-insight">
+
+
+                <div class="insight-icon">
+                    ₹
+                </div>
+
+
+                <div>
+
+                    <strong data-dash="priceOpportunity">
+                        PRICE OPPORTUNITY
+                    </strong>
+
+
+                    <p data-dash="priceOpportunityText">
+
+                        Your bamboo basket may support
+                        a selling range of ₹750–₹850.
+
+                    </p>
+
+                </div>
+
+
+            </div>
+
+
+
+            <!-- INSIGHT 3 -->
+
+            <div class="ai-insight">
+
+
+                <div class="insight-icon">
+                    →
+                </div>
+
+
+                <div>
+
+                    <strong data-dash="buyerOpportunity">
+                        BUYER OPPORTUNITY
+                    </strong>
+
+
+                    <p data-dash="buyerOpportunityText">
+
+    8 potential buyers are looking
+    for products in your category.
+
+</p>
+
+<button
+    type="button"
+    class="insight-action"
+    onclick="document.querySelector('.buyer-matching-panel').scrollIntoView({ behavior: 'smooth' })"
+>
+    VIEW MATCHES →
+</button>
+
+                </div>
+
+
+            </div>
+
+
+        </section>
+
+
+    </section>
+
+
+<!-- =====================================================
+     AI BUYER MATCHING
+===================================================== -->
+
+<section class="buyer-matching-panel dashboard-panel">
+
+    <div class="panel-header buyer-matching-header">
+
+        <div>
+
+            <span>
+                TEDKRAFT AI
+            </span>
+
+            <h2>
+                AI Buyer Matches
+            </h2>
+
+            <p class="buyer-matching-subtitle">
+                TEDKRAFT found buyers whose requirements
+                closely match your craft.
+            </p>
+
+        </div>
+
+        <div class="buyer-match-count">
+            <strong>3</strong>
+            <small>HIGH-POTENTIAL MATCHES</small>
+        </div>
+
+    </div>
+
+
+    <!-- PRODUCT BEING MATCHED -->
+
+    <div class="matching-product">
+
+        <div class="matching-product-icon">
+            🧺
+        </div>
+
+        <div>
+
+            <span>
+                PRODUCT ANALYSED
+            </span>
+
+            <h3>
+                Handwoven Bamboo Basket
+            </h3>
+
+            <p>
+                Bamboo Craft · Home Décor · ₹750–₹850
+            </p>
+
+        </div>
+
+        <div class="matching-status">
+            ✓ AI ANALYSED
+        </div>
+
+    </div>
+
+
+    <!-- BUYER CARDS -->
+
+    <div class="buyer-match-grid">
+
+
+        <!-- BUYER 1 -->
+
+        <article class="buyer-match-card">
+
+            <div class="buyer-card-top">
+
+                <div class="buyer-avatar">
+                    🏪
+                </div>
+
+                <div>
+
+                    <span>
+                        RETAIL BUYER
+                    </span>
+
+                    <h3>
+                        Southern Home Collective
+                    </h3>
+
+                    <small>
+                        Chennai, Tamil Nadu
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="match-score">
+
+                <div>
+
+                    <span>
+                        AI MATCH
+                    </span>
+
+                    <strong>
+                        94%
+                    </strong>
+
+                </div>
+
+                <div class="match-bar">
+                    <span style="width:94%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="buyer-requirements">
+
+                <span>✓ Bamboo</span>
+                <span>✓ Handmade</span>
+                <span>✓ Home Décor</span>
+
+            </div>
+
+
+            <div class="buyer-order">
+
+                <small>
+                    EXPECTED ORDER
+                </small>
+
+                <strong>
+                    50–100 units
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="buyer-view-btn"
+                onclick="openBuyerModal('southern')"
+            >
+                VIEW BUYER →
+            </button>
+
+        </article>
+
+
+
+        <!-- BUYER 2 -->
+
+        <article class="buyer-match-card">
+
+            <div class="buyer-card-top">
+
+                <div class="buyer-avatar">
+                    🛍
+                </div>
+
+                <div>
+
+                    <span>
+                        MARKETPLACE
+                    </span>
+
+                    <h3>
+                        Crafted Living Market
+                    </h3>
+
+                    <small>
+                        Bengaluru, Karnataka
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="match-score">
+
+                <div>
+
+                    <span>
+                        AI MATCH
+                    </span>
+
+                    <strong>
+                        89%
+                    </strong>
+
+                </div>
+
+                <div class="match-bar">
+                    <span style="width:89%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="buyer-requirements">
+
+                <span>✓ Bamboo</span>
+                <span>✓ Sustainable</span>
+                <span>✓ Handmade</span>
+
+            </div>
+
+
+            <div class="buyer-order">
+
+                <small>
+                    EXPECTED ORDER
+                </small>
+
+                <strong>
+                    25–50 units
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="buyer-view-btn"
+                onclick="openBuyerModal('crafted')"
+            >
+                VIEW BUYER →
+            </button>
+
+        </article>
+
+
+
+        <!-- BUYER 3 -->
+
+        <article class="buyer-match-card">
+
+            <div class="buyer-card-top">
+
+                <div class="buyer-avatar">
+                    🏠
+                </div>
+
+                <div>
+
+                    <span>
+                        HOME DÉCOR
+                    </span>
+
+                    <h3>
+                        Heritage Home Stores
+                    </h3>
+
+                    <small>
+                        Hyderabad, Telangana
+                    </small>
+
+                </div>
+
+            </div>
+
+
+            <div class="match-score">
+
+                <div>
+
+                    <span>
+                        AI MATCH
+                    </span>
+
+                    <strong>
+                        84%
+                    </strong>
+
+                </div>
+
+                <div class="match-bar">
+                    <span style="width:84%;"></span>
+                </div>
+
+            </div>
+
+
+            <div class="buyer-requirements">
+
+                <span>✓ Home Décor</span>
+                <span>✓ Natural Fibre</span>
+                <span>✓ Artisan Made</span>
+
+            </div>
+
+
+            <div class="buyer-order">
+
+                <small>
+                    EXPECTED ORDER
+                </small>
+
+                <strong>
+                    20–40 units
+                </strong>
+
+            </div>
+
+
+            <button
+                type="button"
+                class="buyer-view-btn"
+                onclick="openBuyerModal('heritage')"
+            >
+                VIEW BUYER →
+            </button>
+
+        </article>
+
+
+    </div>
+
+
+    <div class="buyer-matching-footer">
+
+        <span>
+            ✦
+        </span>
+
+        <p>
+            Match scores are based on product category,
+            material, price range, buyer requirements
+            and location.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BUYER PROFILE MODAL
+===================================================== -->
+
+<div
+    id="buyerModal"
+    class="buyer-modal"
+    aria-hidden="true"
+>
+
+    <div
+        class="buyer-modal-overlay"
+        onclick="closeBuyerModal()"
+    ></div>
+
+
+    <div
+        class="buyer-modal-box"
+        role="dialog"
+        aria-modal="true"
+    >
+
+        <button
+            type="button"
+            class="buyer-modal-close"
+            onclick="closeBuyerModal()"
+            aria-label="Close"
+        >
+            ×
+        </button>
+
+
+        <div class="buyer-modal-label">
+            TEDKRAFT AI · BUYER PROFILE
+        </div>
+
+
+        <div class="buyer-modal-heading">
+
+            <div
+                id="buyerModalIcon"
+                class="buyer-modal-icon"
+            >
+                🏪
+            </div>
+
+            <div>
+
+                <span id="buyerModalType">
+                    RETAIL BUYER
+                </span>
+
+                <h2 id="buyerModalName">
+                    Southern Home Collective
+                </h2>
+
+                <p id="buyerModalLocation">
+                    Chennai, Tamil Nadu
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="buyer-modal-score">
+
+            <div>
+
+                <small>
+                    AI MATCH SCORE
+                </small>
+
+                <strong id="buyerModalScore">
+                    94%
+                </strong>
+
+            </div>
+
+            <div class="modal-score-bar">
+                <span
+                    id="buyerModalBar"
+                    style="width:94%;"
+                ></span>
+            </div>
+
+        </div>
+
+
+        <div class="buyer-modal-grid">
+
+
+            <div class="buyer-modal-section">
+
+                <span>
+                    WHY THIS BUYER MATCHES
+                </span>
+
+                <ul id="buyerModalReasons">
+
+                    <li>
+                        ✓ Interested in bamboo products
+                    </li>
+
+                    <li>
+                        ✓ Accepts handmade products
+                    </li>
+
+                    <li>
+                        ✓ Home décor category
+                    </li>
+
+                    <li>
+                        ✓ Your price range fits
+                    </li>
+
+                </ul>
+
+            </div>
+
+
+            <div class="buyer-modal-section">
+
+                <span>
+                    OPPORTUNITY
+                </span>
+
+                <div class="buyer-opportunity-box">
+
+                    <small>
+                        EXPECTED ORDER
+                    </small>
+
+                    <strong id="buyerModalOrder">
+                        50–100 units
+                    </strong>
+
+                </div>
+
+                <div class="buyer-opportunity-box">
+
+                    <small>
+                        PRODUCT
+                    </small>
+
+                    <strong>
+                        Bamboo Basket
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+        <div class="buyer-modal-actions">
+
+            <button
+                type="button"
+                class="primary-btn"
+                onclick="contactBuyer()"
+            >
+                CONTACT BUYER →
+            </button>
+
+            <button
+                type="button"
+                class="outline-btn"
+                onclick="closeBuyerModal()"
+            >
+                CLOSE
+            </button>
+
+        </div>
+
+
+        <div
+            id="buyerContactMessage"
+            class="buyer-contact-message"
+        >
+            ✦ Buyer enquiry prepared.
+            TEDKRAFT can connect you with this buyer.
+        </div>
+
+
+    </div>
+
+</div>
+    <!-- =====================================================
+         MARKET PERFORMANCE
+    ====================================================== -->
+
+    <section class="dashboard-panel performance-panel">
+
+
+        <div class="panel-header">
+
+
+            <div>
+
+                <span data-dash="marketPerformance">
+                    MARKET PERFORMANCE
+                </span>
+
+                <h2 data-dash="productInterest">
+                    Product Interest
+                </h2>
+
+            </div>
+
+
+            <strong class="growth">
+                +24%
+            </strong>
+
+
+        </div>
+
+
+
+        <div class="performance-chart">
+
+
+            <div class="chart-column">
+
+                <span style="height:35%;"></span>
+
+                <small>
+                    JUN
+                </small>
+
+            </div>
+
+
+            <div class="chart-column">
+
+                <span style="height:48%;"></span>
+
+                <small>
+                    JUL
+                </small>
+
+            </div>
+
+
+            <div class="chart-column">
+
+                <span style="height:57%;"></span>
+
+                <small>
+                    AUG
+                </small>
+
+            </div>
+
+
+            <div class="chart-column">
+
+                <span style="height:72%;"></span>
+
+                <small>
+                    SEP
+                </small>
+
+            </div>
+
+
+            <div class="chart-column">
+
+                <span style="height:90%;"></span>
+
+                <small>
+                    OCT
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         AI ACTIVITY
+    ====================================================== -->
+
+    <section class="dashboard-panel">
+
+
+        <div class="panel-header">
+
+
+            <div>
+
+                <span data-dash="aiActivity">
+                    AI ACTIVITY
+                </span>
+
+                <h2 data-dash="recentActions">
+                    Recent Actions
+                </h2>
+
+            </div>
+
+
+        </div>
+
+
+
+        <div class="activity-list">
+
+
+            <div class="activity-item">
+
+                <span>
+                    ✓
+                </span>
+
+                <p data-dash="photoEnhanced">
+                    Product photograph enhanced
+                </p>
+
+                <small data-dash="justNow">
+                    Just now
+                </small>
+
+            </div>
+
+
+
+            <div class="activity-item">
+
+                <span>
+                    ✓
+                </span>
+
+                <p data-dash="catalogueGenerated">
+                    English catalogue generated
+                </p>
+
+                <small data-dash="fiveMinutes">
+                    5 min ago
+                </small>
+
+            </div>
+
+
+
+            <div class="activity-item">
+
+                <span>
+                    ✓
+                </span>
+
+                <p data-dash="priceCalculated">
+                    Fair price range calculated
+                </p>
+
+                <small data-dash="twelveMinutes">
+                    12 min ago
+                </small>
+
+            </div>
+
+
+
+            <div class="activity-item">
+
+                <span>
+                    ✓
+                </span>
+
+                <p data-dash="buyersDiscovered">
+                    3 buyer matches discovered
+                </p>
+
+                <small data-dash="twentyFiveMinutes">
+                    25 min ago
+                </small>
+
+            </div>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- =====================================================
+         AI RECOMMENDATION
+    ====================================================== -->
+
+    <section class="ai-recommendation">
+
+
+        <div class="recommendation-icon">
+            ✦
+        </div>
+
+
+        <div>
+
+
+            <span data-dash="recommendation">
+                TEDKRAFT RECOMMENDS
+            </span>
+
+
+            <h2 data-dash="recommendationTitle">
+
+                Consider producing more bamboo
+                home décor products.
+
+            </h2>
+
+
+            <p data-dash="recommendationText">
+
+                Similar products are receiving
+                increased market interest.
+
+            </p>
+
+
+        </div>
+
+
+        <button
+            type="button"
+            onclick="goToProductStudio()"
+            data-dash="createProduct"
+        >
+            CREATE PRODUCT →
+        </button>
+
+
+    </section>
+
+
+</main>
+
+
+
+<!-- =========================================================
+     DASHBOARD JAVASCRIPT
+========================================================= -->
+
+<script src="dashboard.js"></script>
+
+<script>
+
+/* =========================================================
+   TEDKRAFT BOOT ENGINE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const boot =
+        document.getElementById("tedkraftBoot");
+
+    const progress =
+        document.getElementById("bootProgressBar");
+
+    const percent =
+        document.getElementById("bootPercent");
+
+    const status =
+        document.getElementById("bootStatus");
+
+    const message =
+        document.getElementById("bootMessage");
+
+
+    if (!boot) return;
+
+
+    /* ========================================
+       BOOT MESSAGES
+    ======================================== */
+
+    const bootMessages = [
+
+        {
+            text: "Preserving India's handmade heritage.",
+            status: "INITIALIZING"
+        },
+
+        {
+            text: "Connecting artisan stories.",
+            status: "HERITAGE DATABASE"
+        },
+
+        {
+            text: "Preparing craft intelligence.",
+            status: "AI ENGINE"
+        },
+
+        {
+            text: "Connecting makers with markets.",
+            status: "ARTISAN NETWORK"
+        },
+
+        {
+            text: "TEDKRAFT is ready.",
+            status: "WELCOME"
+
+        }
+
+    ];
+
+
+    /* ========================================
+       PROGRESS
+    ======================================== */
+
+    let currentProgress = 0;
+
+    let messageIndex = 0;
+
+
+    const progressTimer =
+        setInterval(() => {
+
+            currentProgress +=
+                Math.floor(
+                    Math.random() * 8
+                ) + 3;
+
+
+            if (currentProgress >= 100) {
+
+                currentProgress = 100;
+
+                clearInterval(progressTimer);
+
+            }
+
+
+            progress.style.width =
+                currentProgress + "%";
+
+
+            percent.textContent =
+                currentProgress + "%";
+
+
+            /* Change message */
+
+            if (
+                currentProgress >= 20 &&
+                messageIndex < 1
+            ) {
+
+                messageIndex = 1;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 45 &&
+                messageIndex < 2
+            ) {
+
+                messageIndex = 2;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 70 &&
+                messageIndex < 3
+            ) {
+
+                messageIndex = 3;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 90 &&
+                messageIndex < 4
+            ) {
+
+                messageIndex = 4;
+
+                changeMessage();
+
+            }
+
+
+        }, 150);
+
+
+    /* ========================================
+       MESSAGE ANIMATION
+    ======================================== */
+
+    function changeMessage() {
+
+        message.style.opacity = "0";
+
+
+        setTimeout(() => {
+
+            const item =
+                bootMessages[messageIndex];
+
+
+            message.textContent =
+                item.text;
+
+
+            status.textContent =
+                item.status;
+
+
+            message.style.opacity = ".8";
+
+
+        }, 250);
+
+    }
+
+
+    /* ========================================
+       START TEAR
+    ======================================== */
+
+    setTimeout(() => {
+
+        boot.classList.add("boot-tearing");
+
+    }, 2200);
+
+
+    /* ========================================
+       REMOVE BOOT SCREEN
+    ======================================== */
+
+    setTimeout(() => {
+
+        boot.classList.add("boot-finished");
+
+
+        setTimeout(() => {
+
+            boot.remove();
+
+        }, 550);
+
+    }, 4100);
+
+
+});
+
+</script>
+</body>
+
+</html>

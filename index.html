@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>TEDKRAFT | AI for Artisans</title>
+
+    <!-- Display fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700;800&family=Cinzel+Decorative:wght@400;700;900&display=swap"
+        rel="stylesheet"
+    >
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+<script>
+
+    /*
+       TEDKRAFT ENTRY CHECK
+    */
+
+    if (!sessionStorage.getItem("tedkraftBooted")) {
+
+        sessionStorage.setItem(
+            "tedkraftBooted",
+            "true"
+        );
+
+        window.location.replace(
+            "boot.html"
+        );
+
+    }
+
+
+    /*
+       SMOOTH BOOT → HOMEPAGE BRIDGE
+    */
+
+    if (
+        sessionStorage.getItem(
+            "tedkraftTransition"
+        ) === "true"
+    ) {
+
+        document.body.classList.add(
+            "coming-from-boot"
+        );
+
+        sessionStorage.removeItem(
+            "tedkraftTransition"
+        );
+
+        window.addEventListener(
+            "load",
+            () => {
+
+                setTimeout(() => {
+
+                    document.body.classList.add(
+                        "homepage-ready"
+                    );
+
+                }, 100);
+
+            }
+        );
+
+    }
+
+</script>
+
+
+<!-- =====================================================
+     SIDEBAR
+====================================================== -->
+
+<aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-symbol">
+            T
+        </div>
+
+        <h1 data-no-translate>TEDKRAFT</h1>
+
+        <p data-no-translate>AI FOR ARTISANS</p>
+
+        <div class="brand-line">
+            ✦
+        </div>
+
+    </div>
+
+
+    <nav class="side-nav">
+
+        <a href="#home" class="nav-item active">
+            <span>⌂</span>
+            Home
+        </a>
+
+        <a href="#problem" class="nav-item">
+            <span>◇</span>
+            The Problem
+        </a>
+
+        <a href="#features" class="nav-item">
+            <span>✦</span>
+            AI Features
+        </a>
+
+        <a href="#workflow" class="nav-item">
+            <span>◎</span>
+            How It Works
+        </a>
+
+        <a href="#market" class="nav-item">
+            <span>♧</span>
+            Market Linkage
+        </a>
+
+        <a href="dashboard.html" class="nav-link">
+            <span>▣</span>
+            <span>Dashboard</span>
+        </a>
+
+    </nav>
+
+
+    <!-- SELLER / CUSTOMER SWITCH -->
+
+    <div class="domain-switcher">
+
+        <a
+            href="dashboard.html"
+            class="domain-option active"
+        >
+            ARTISAN
+        </a>
+
+        <a
+            href="customer.html"
+            class="domain-option"
+        >
+            CUSTOMER
+        </a>
+
+    </div>
+
+
+    <div class="sidebar-bottom">
+
+        <div class="language-selector" data-no-translate>
+
+            <div class="language-title">
+                LANGUAGE
+            </div>
+
+            <div class="language-buttons">
+
+                <button
+                    type="button"
+                    data-language="ta"
+                    onclick="changeLanguage('ta')"
+                >
+                    தமிழ்
+                </button>
+
+                <button
+                    type="button"
+                    data-language="en"
+                    onclick="changeLanguage('en')"
+                >
+                    English
+                </button>
+
+                <button
+                    type="button"
+                    data-language="hi"
+                    onclick="changeLanguage('hi')"
+                >
+                    हिन्दी
+                </button>
+
+                <button
+                    type="button"
+                    data-language="kn"
+                    onclick="changeLanguage('kn')"
+                >
+                    ಕನ್ನಡ
+                </button>
+
+                <button
+                    type="button"
+                    data-language="te"
+                    onclick="changeLanguage('te')"
+                >
+                    తెలుగు
+                </button>
+
+            </div>
+
+        </div>
+
+        <div class="mandala">
+            ✿
+        </div>
+
+        <p>
+            READY TO GROW?
+        </p>
+
+        <button onclick="openDemo()">
+            TRY TEDKRAFT →
+        </button>
+
+    </div>
+
+</aside>
+
+
+
+<!-- =====================================================
+     MAIN
+====================================================== -->
+
+<main>
+
+
+    <!-- =================================================
+         HERO
+    ================================================== -->
+
+    <section id="home" class="hero">
+
+        <div class="hero-content">
+
+            <div class="top-ornament">
+                ✦
+            </div>
+
+
+            <h2
+                class="brand-heading"
+                data-no-translate
+            >
+                TEDKRAFT
+            </h2>
+
+
+            <div class="heading-line">
+
+                <span></span>
+
+                ✦
+
+                <span></span>
+
+            </div>
+
+
+            <p class="eyebrow">
+                AI-DRIVEN ARTISAN COMMERCE
+            </p>
+
+
+            <h3>
+
+                Your craft.<br>
+
+                Your story.<br>
+
+                <span>Your market.</span>
+
+            </h3>
+
+
+            <p class="hero-text">
+
+                TEDKRAFT is an AI-powered virtual business manager
+                designed to help marginalized artisans transform
+                traditional craftsmanship into professional
+                digital businesses.
+
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <button
+                    class="primary-btn"
+                    onclick="openDemo()"
+                >
+                    START CREATING →
+                </button>
+
+
+                <a
+                    href="#workflow"
+                    class="outline-btn"
+                >
+                    EXPLORE THE PROCESS
+                </a>
+
+            </div>
+
+
+            <div class="feature-strip">
+
+                <span>
+                    VOICE FIRST
+                </span>
+
+                <i></i>
+
+                <span>
+                    AI PHOTOGRAPHY
+                </span>
+
+                <i></i>
+
+                <span>
+                    MULTILINGUAL
+                </span>
+
+                <i></i>
+
+                <span>
+                    SMART PRICING
+                </span>
+
+            </div>
+
+        </div>
+
+
+        <!-- HERO PRODUCT -->
+
+        <div class="hero-product">
+
+            <div class="product-image">
+
+                <img
+                    src="bamboo-basket.png"
+                    alt="Handcrafted bamboo basket"
+                >
+
+                <div class="image-overlay"></div>
+
+                <div class="image-tag">
+                    TEDKRAFT AI ENHANCED
+                </div>
+
+            </div>
+
+
+            <div class="product-card">
+
+                <small>
+                    AI ENHANCED
+                </small>
+
+                <div class="card-line"></div>
+
+                <p>
+                    HOME DÉCOR
+                </p>
+
+                <strong>
+                    94%
+                </strong>
+
+                <span>
+                    MATCH
+                </span>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         PROBLEM
+    ================================================== -->
+
+    <section id="problem" class="problem">
+
+        <div class="section-title">
+
+            <span>✦</span>
+
+            <h2>
+                THE PROBLEM
+            </h2>
+
+            <span>✦</span>
+
+            <p>
+                Many artisans have exceptional skills but struggle
+                with key challenges in entering the digital marketplace.
+            </p>
+
+        </div>
+
+
+        <div class="problem-grid">
+
+
+            <div class="problem-card">
+
+                <div class="problem-image">
+
+                    <img
+                        src="artisan-weaving.png"
+                        alt="Indian artisan weaving"
+                    >
+
+                </div>
+
+                <h3>
+                    Poor Product
+                    Photography
+                </h3>
+
+                <p>
+                    Artisans often struggle to create professional
+                    e-commerce photographs.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-card">
+
+                <div class="problem-image">
+
+                    <img
+                        src="pottery.png"
+                        alt="Traditional Indian pottery"
+                    >
+
+                </div>
+
+                <h3>
+                    Difficult
+                    Cataloguing
+                </h3>
+
+                <p>
+                    Creating descriptions, categories and product
+                    information can be complicated.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-card">
+
+                <div class="problem-image">
+
+                    <img
+                        src="handloom.png"
+                        alt="Indian handloom weaving"
+                    >
+
+                </div>
+
+                <h3>
+                    Language
+                    Barriers
+                </h3>
+
+                <p>
+                    Regional-language artisans face difficulties
+                    reaching wider markets.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-card">
+
+                <div class="problem-image">
+
+                    <img
+                        src="jewellery.png"
+                        alt="Traditional Indian jewellery"
+                    >
+
+                </div>
+
+                <h3>
+                    Pricing
+                    Uncertainty
+                </h3>
+
+                <p>
+                    Lack of market information leads to uncertain
+                    pricing decisions.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-card text-card">
+
+                <div class="simple-symbol">
+                    ₹
+                </div>
+
+                <h3>
+                    Limited Market
+                    Access
+                </h3>
+
+                <p>
+                    Dependence on fairs, exhibitions and
+                    intermediaries limits year-round opportunities.
+                </p>
+
+            </div>
+
+
+
+            <div class="problem-card text-card">
+
+                <div class="simple-symbol">
+                    AI
+                </div>
+
+                <h3>
+                    Low Digital
+                    Literacy
+                </h3>
+
+                <p>
+                    Existing platforms can be confusing for
+                    first-time digital sellers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FEATURES
+    ================================================== -->
+
+    <section id="features" class="features">
+
+        <div class="section-title">
+
+            <span>✦</span>
+
+            <h2>
+                TEDKRAFT AI
+            </h2>
+
+            <span>✦</span>
+
+            <p>
+                Simple tools that turn traditional craftsmanship
+                into digital opportunity.
+            </p>
+
+        </div>
+
+
+        <div class="feature-grid">
+
+
+            <!-- FEATURE 01 -->
+
+            <div class="feature-card big">
+
+                <div class="feature-photo">
+
+                    <img
+                        src="bamboo-products.jpg"
+                        alt="Indian handmade bamboo products"
+                    >
+
+                    <div class="feature-photo-overlay"></div>
+
+                    <span>
+                        AI PRODUCT STUDIO
+                    </span>
+
+                </div>
+
+
+                <div class="feature-number">
+                    01
+                </div>
+
+
+                <h3>
+                    AI Product Studio
+                </h3>
+
+
+                <p>
+                    Enhance lighting, remove distracting backgrounds
+                    and prepare professional product images.
+                </p>
+
+
+                <button onclick="openDemo()">
+                    TRY PRODUCT STUDIO →
+                </button>
+
+            </div>
+
+
+
+            <!-- FEATURE 02 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    02
+                </div>
+
+                <div class="feature-icon">
+                    MIC
+                </div>
+
+                <h3>
+                    Voice → Catalogue
+                </h3>
+
+                <p>
+                    Speak naturally and let AI extract product
+                    information automatically.
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 03 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    03
+                </div>
+
+                <div class="feature-icon">
+                    LANG
+                </div>
+
+                <h3>
+                    Multilingual AI
+                </h3>
+
+                <p>
+                    Generate professional listings across
+                    regional languages, English and Hindi.
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 04 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    04
+                </div>
+
+                <div class="feature-icon">
+                    ₹
+                </div>
+
+                <h3>
+                    Fair Price Advisor
+                </h3>
+
+                <p>
+                    Understand material cost, labour, market range
+                    and demand before deciding your price.
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 05 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    05
+                </div>
+
+                <div class="feature-icon">
+                    DATA
+                </div>
+
+                <h3>
+                    Demand Intelligence
+                </h3>
+
+                <p>
+                    Discover products and categories that are
+                    receiving increased market interest.
+                </p>
+
+            </div>
+
+
+
+            <!-- FEATURE 06 -->
+
+            <div class="feature-card">
+
+                <div class="feature-number">
+                    06
+                </div>
+
+                <div class="feature-icon">
+                    LINK
+                </div>
+
+                <h3>
+                    AI Buyer Matching
+                </h3>
+
+                <p>
+                    Connect artisans with retailers, hotels,
+                    corporate buyers and wholesalers.
+                </p>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         WORKFLOW
+    ================================================== -->
+
+    <section id="workflow" class="workflow">
+
+        <div class="section-title">
+
+            <span>✦</span>
+
+            <h2>
+                HOW IT WORKS
+            </h2>
+
+            <span>✦</span>
+
+            <p>
+                One simple journey from artisan voice to digital market.
+            </p>
+
+        </div>
+
+
+        <div class="workflow-container">
+
+
+            <!-- STEP 01 -->
+
+            <div class="workflow-card">
+
+                <div class="number">
+                    01
+                </div>
+
+                <div class="workflow-icon">
+                    VOICE
+                </div>
+
+                <h3>
+                    SPEAK
+                </h3>
+
+                <p>
+                    "This is a handmade bamboo basket.
+                    It took two days."
+                </p>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                →
+            </div>
+
+
+            <!-- STEP 02 -->
+
+            <div class="workflow-card">
+
+                <div class="number">
+                    02
+                </div>
+
+                <div class="workflow-icon">
+                    AI
+                </div>
+
+                <h3>
+                    AI UNDERSTANDS
+                </h3>
+
+                <div class="data">
+
+                    Product → Basket<br>
+
+                    Material → Bamboo<br>
+
+                    Time → 2 Days<br>
+
+                    Cost → ₹300
+
+                </div>
+
+            </div>
+
+
+            <div class="workflow-arrow">
+                →
+            </div>
+
+
+            <!-- STEP 03 -->
+
+            <div class="workflow-card">
+
+                <div class="number">
+                    03
+                </div>
+
+                <div class="workflow-icon">
+                    CATALOG
+                </div>
+
+                <h3>
+                    CATALOGUE
+                </h3>
+
+
+                <div class="mini-product">
+
+                    <div class="mini-product-image">
+
+                        <img
+                            src="bamboo-basket.png"
+                            alt="Bamboo basket"
+                        >
+
+                    </div>
+
+
+                    <div>
+
+                        <strong>
+                            Handwoven Bamboo Basket
+                        </strong>
+
+                        <p>
+                            Traditional handcrafted product...
+                        </p>
+
+                        <b>
+                            ₹750 – ₹850
+                        </b>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         MARKET LINKAGE
+    ================================================== -->
+
+    <section id="market" class="market">
+
+        <div class="market-content">
+
+            <span>
+                ✦ MARKET LINKAGE
+            </span>
+
+
+            <h2>
+
+                From craft
+
+                <br>
+
+                <strong>to market.</strong>
+
+            </h2>
+
+
+            <p>
+                TEDKRAFT helps artisans discover relevant
+                customers, retailers, hotels, corporate buyers
+                and bulk opportunities.
+            </p>
+
+
+            <button
+                class="primary-btn"
+                onclick="openDemo()"
+            >
+                FIND BUYERS →
+            </button>
+
+        </div>
+
+
+
+        <div class="market-network">
+
+
+            <div class="network-box artisan">
+
+                <div class="network-photo">
+
+                    <img
+                        src="artisan-weaving.png"
+                        alt="Artisan"
+                    >
+
+                </div>
+
+                <strong>
+                    ARTISAN
+                </strong>
+
+            </div>
+
+
+            <div class="network-line"></div>
+
+
+            <div class="network-box ted">
+
+                <div class="ted-symbol">
+                    T
+                </div>
+
+                <strong>
+                    TEDKRAFT AI
+                </strong>
+
+                <small>
+                    Catalogue • Pricing • Matching
+                </small>
+
+            </div>
+
+
+            <div class="network-line"></div>
+
+
+            <div class="buyers">
+
+                <div>
+                    HOTEL
+                    <b>Hotels</b>
+                </div>
+
+                <div>
+                    B2B
+                    <b>Corporate</b>
+                </div>
+
+                <div>
+                    RETAIL
+                    <b>Retailers</b>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FINAL CTA
+    ================================================== -->
+
+    <section class="final">
+
+        <span>
+            TEDKRAFT AI
+        </span>
+
+
+        <h2>
+
+            Traditional skill deserves
+
+            <strong>
+                modern opportunity.
+            </strong>
+
+        </h2>
+
+
+        <p>
+            AI-powered digital commerce for India's artisans.
+        </p>
+
+
+        <button
+            class="primary-btn"
+            onclick="openDemo()"
+        >
+            TRY TEDKRAFT →
+        </button>
+
+    </section>
+
+
+
+    <!-- =================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        <strong>
+            TEDKRAFT
+        </strong>
+
+
+        <p>
+            AI-Driven Market Linkage and Smart Cataloging
+            for Marginalized Artisans
+        </p>
+
+
+        <small>
+            SIH Problem Statement 26090
+        </small>
+
+    </footer>
+
+</main>
+
+
+
+<!-- =====================================================
+     DEMO MODAL
+====================================================== -->
+
+<div id="demo" class="modal">
+
+    <div class="modal-box">
+
+
+        <button
+            class="close"
+            onclick="closeDemo()"
+        >
+            ×
+        </button>
+
+
+        <div class="modal-title">
+
+            <span>
+                TEDKRAFT AI ENGINE
+            </span>
+
+
+            <h2>
+                CREATE YOUR PRODUCT
+            </h2>
+
+
+            <p>
+                Speak about your product and upload a photograph.
+            </p>
+
+        </div>
+
+
+
+        <div
+            class="studio-progress"
+            aria-label="Product creation steps"
+        >
+
+            <div class="studio-step active">
+
+                <span>01</span>
+
+                <b>SPEAK</b>
+
+            </div>
+
+            <div class="studio-step">
+
+                <span>02</span>
+
+                <b>PHOTO</b>
+
+            </div>
+
+            <div class="studio-step">
+
+                <span>03</span>
+
+                <b>CATALOGUE</b>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="demo-grid">
+
+
+            <!-- VOICE -->
+
+            <div class="demo-card">
+
+                <label>
+                    STEP 01 — VOICE
+                </label>
+
+
+                <button
+                    id="voiceBtn"
+                    onclick="startVoice()"
+                >
+
+                    <span class="voice-symbol">
+                        MIC
+                    </span>
+
+
+                    <strong>
+                        TAP TO SPEAK
+                    </strong>
+
+
+                    <small>
+                        Tamil • Hindi • English
+                    </small>
+
+                </button>
+
+
+                <div
+                    class="voice-transcript-box"
+                    id="voiceTranscriptBox"
+                >
+
+                    <div class="voice-transcript-head">
+
+                        <span>
+                            VOICE TRANSCRIPT
+                        </span>
+
+                        <small id="voiceTranscriptStatus">
+                            WAITING
+                        </small>
+
+                    </div>
+
+                    <p
+                        id="voiceOutput"
+                        contenteditable="true"
+                        style="outline: none; min-height: 40px; cursor: text;"
+                        title="Click to edit or type product information"
+                    >
+                        Example: "This is a handmade bamboo basket..."
+                    </p>
+
+                </div>
+
+            </div>
+
+
+
+            <!-- IMAGE -->
+
+            <div class="demo-card">
+
+                <label>
+                    STEP 02 — PHOTO
+                </label>
+
+
+                <label
+                    class="upload"
+                    for="imageInput"
+                >
+
+                    <span class="upload-symbol">
+                        PHOTO
+                    </span>
+
+
+                    <strong>
+                        TAKE PHOTO OF YOUR PRODUCT
+                    </strong>
+
+
+                    <small>
+                        JPG / PNG
+                    </small>
+
+
+                    <input
+                        type="file"
+                        id="imageInput"
+                        accept="image/*"
+                        capture="environment"
+                        onchange="previewProductImage(event)"
+                    >
+
+
+                    <div
+                        class="photo-status"
+                        id="photoStatus"
+                    >
+                        READY FOR PRODUCT PHOTO
+                    </div>
+
+
+                    <div id="imagePreview"></div>
+
+                </label>
+
+
+                <!-- AI RESULT -->
+
+                <div class="ai-result">
+
+
+                    <div class="result-head">
+
+                        <span>
+                            ✦ AI GENERATED CATALOGUE
+                        </span>
+
+
+                        <b id="status">
+                            WAITING
+                        </b>
+
+                    </div>
+
+
+
+                    <div class="catalogue">
+
+                        <div class="catalogue-img">
+
+                            <img
+                                id="catalogueImage"
+                                src="bamboo-basket.png"
+                                alt="Bamboo basket"
+                            >
+
+                        </div>
+
+
+                        <div>
+
+                            <small id="catalogueCategory">
+                                PRODUCT CATEGORY
+                            </small>
+
+
+                            <h3 id="catalogueTitle">
+                                Handcrafted Product
+                            </h3>
+
+
+                            <p id="catalogueDescription">
+                                Upload a product photo or enter product
+                                details, then click GENERATE CATALOGUE.
+                            </p>
+
+
+                            <div class="details">
+
+                                <span>
+
+                                    MATERIAL
+
+                                    <b id="catalogueMaterial">
+                                        Not specified
+                                    </b>
+
+                                </span>
+
+
+                                <span>
+
+                                    CRAFT
+
+                                    <b id="catalogueCraft">
+                                        Not specified
+                                    </b>
+
+                                </span>
+
+
+                                <span>
+
+                                    TIME
+
+                                    <b id="catalogueTime">
+                                        Not specified
+                                    </b>
+
+                                </span>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <div class="modal-buttons">
+
+                        <button
+                            class="primary-btn"
+                            onclick="generateCatalogue()"
+                        >
+                            GENERATE CATALOGUE
+                        </button>
+
+
+                        <button
+                            class="outline-btn"
+                            onclick="showPrice()"
+                        >
+                            ₹ FAIR PRICE
+                        </button>
+
+                    </div>
+
+
+
+                    
+                <!-- =================================================
+     FAIR PRICE ADVISOR
+================================================== -->
+
+<div
+    id="price"
+    class="price-result"
+>
+
+    <div class="price-header">
+
+        <div>
+            <small>TEDKRAFT AI</small>
+
+            <h3>FAIR PRICE ADVISOR</h3>
+
+            <p>
+                Enter your actual production costs to estimate a
+                sustainable selling price.
+            </p>
+        </div>
+
+    </div>
+
+
+    <!-- COST INPUTS -->
+
+    <div
+        id="fairPriceCalculator"
+        class="pricing-inputs"
+    >
+
+        <label class="cost-input">
+
+            <span>
+                MATERIAL COST
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="materialCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 300"
+                >
+            </div>
+
+        </label>
+
+
+        <label class="cost-input">
+
+            <span>
+                LABOUR COST
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="labourCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 500"
+                >
+            </div>
+
+        </label>
+
+
+        <label class="cost-input">
+
+            <span>
+                UTILITY COST
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="utilityCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 50"
+                >
+            </div>
+
+        </label>
+
+
+        <label class="cost-input">
+
+            <span>
+                TRANSPORT COST
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="transportCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 30"
+                >
+            </div>
+
+        </label>
+
+
+        <label class="cost-input">
+
+            <span>
+                PACKAGING COST
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="packagingCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 40"
+                >
+            </div>
+
+        </label>
+
+
+        <label class="cost-input">
+
+            <span>
+                OTHER COSTS
+            </span>
+
+            <div class="input-wrapper">
+                <span>₹</span>
+
+                <input
+                    type="number"
+                    id="otherCostInput"
+                    min="0"
+                    step="1"
+                    placeholder="e.g. 20"
+                >
+            </div>
+
+        </label>
+
+    </div>
+
+
+    <button
+        type="button"
+        class="primary-btn pricing-button"
+        onclick="calculateAndShowFairPrice()"
+    >
+        CALCULATE FAIR PRICE →
+    </button>
+
+
+    <!-- PRICE RESULT -->
+
+    <div
+        id="fairPriceResult"
+        class="fair-price-result"
+    >
+
+        <div class="price-summary">
+
+            <div class="price-summary-item">
+
+                <small>
+                    TOTAL PRODUCTION COST
+                </small>
+
+                <strong id="totalProductionCost">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="price-summary-item">
+
+                <small>
+                    ARTISAN PROFIT
+                </small>
+
+                <strong id="artisanProfit">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="price-summary-item">
+
+                <small>
+                    CRAFTSMANSHIP VALUE
+                </small>
+
+                <strong id="craftsmanshipValue">
+                    ₹0
+                </strong>
+
+            </div>
+
+
+            <div class="price-summary-item">
+
+                <small>
+                    DEMAND
+                </small>
+
+                <strong id="demandValue">
+                    MEDIUM
+                </strong>
+
+            </div>
+
+        </div>
+
+
+        <div class="recommended-price-box">
+
+            <small>
+                RECOMMENDED SELLING RANGE
+            </small>
+
+            <strong id="fairPriceRange">
+                ₹0 — ₹0
+            </strong>
+
+            <span>
+                Recommended price:
+                <b id="recommendedPrice">
+                    ₹0
+                </b>
+            </span>
+
+        </div>
+
+
+        <div class="price-details">
+
+            <p>
+                <strong>
+                    Why this price?
+                </strong>
+            </p>
+
+            <p id="fairPriceExplanation">
+                Enter your production costs to calculate
+                a sustainable price.
+            </p>
+
+            <p>
+                <strong>
+                    Negotiation floor:
+                </strong>
+
+                <span id="negotiationFloor">
+                    ₹0
+                </span>
+            </p>
+
+            <small>
+                Market values shown are prototype reference data.
+            </small>
+
+        </div>
+
+    </div>
+
+</div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,3086 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TEDKRAFT | Discover Handmade Crafts</title>
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- CUSTOMER PAGE STYLES: restored here so customer.html does not depend on the old style.css -->
+    <style>
+   CUSTOMER DOMAIN
+
+
+.customer-page {
+    background: #f7f1e7;
+}
+
+
+/* MAIN */
+
+.customer-main {
+    margin-left: 280px;
+    min-height: 100vh;
+}
+
+
+/* HERO */
+
+.customer-hero {
+    min-height: 75vh;
+
+    padding: 120px 10% 80px;
+
+    display: flex;
+    flex-direction: column;
+
+    justify-content: center;
+
+    border-bottom: 1px solid rgba(120, 70, 30, 0.15);
+}
+
+
+.customer-hero h1 {
+    max-width: 750px;
+
+    font-family: Georgia, serif;
+
+    font-size: 60px;
+
+    font-weight: 500;
+
+    line-height: 1.1;
+
+    color: #4b1118;
+
+    margin: 15px 0;
+}
+
+
+.customer-hero h1 span {
+    display: block;
+
+    color: #b57b22;
+}
+
+
+.customer-hero-text {
+    max-width: 620px;
+
+    color: #66554a;
+
+    font-size: 17px;
+
+    line-height: 1.8;
+}
+
+
+/* SEARCH */
+
+.customer-search {
+    display: flex;
+
+    width: 100%;
+    max-width: 650px;
+
+    margin-top: 30px;
+
+    border: 1px solid #c58a2b;
+
+    background: #fffaf1;
+}
+
+
+.customer-search input {
+    flex: 1;
+
+    border: none;
+
+    outline: none;
+
+    background: transparent;
+
+    padding: 17px 20px;
+
+    font-size: 14px;
+}
+
+
+.customer-search button {
+    border: none;
+
+    padding: 0 25px;
+
+    background: #4b1118;
+
+    color: #e2b75b;
+
+    cursor: pointer;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+}
+
+
+/* SECTIONS */
+
+.customer-section {
+    padding: 80px 10%;
+}
+
+
+.section-heading p {
+    color: #b57b22;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+}
+
+
+.section-heading h2 {
+    font-family: Georgia, serif;
+
+    color: #4b1118;
+
+    font-size: 38px;
+
+    font-weight: 500;
+
+    margin-top: 0;
+
+    margin-bottom: 40px;
+}
+
+
+/* CATEGORY GRID */
+
+.category-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(180px, 1fr));
+
+    gap: 20px;
+}
+
+
+.category-card {
+    background: #fffaf1;
+
+    border: 1px solid rgba(120, 70, 30, 0.2);
+
+    padding: 30px;
+
+    transition: 0.25s ease;
+}
+
+
+.category-card:hover {
+    transform: translateY(-5px);
+
+    border-color: #c58a2b;
+}
+
+
+.category-icon {
+    font-size: 35px;
+
+    margin-bottom: 20px;
+}
+
+
+.category-card h3 {
+    color: #4b1118;
+
+    font-family: Georgia, serif;
+
+    font-size: 19px;
+}
+
+
+.category-card p {
+    color: #66554a;
+
+    font-size: 14px;
+
+    line-height: 1.6;
+}
+
+
+/* PRODUCTS */
+
+.product-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(260px, 1fr));
+
+    gap: 25px;
+}
+
+
+.customer-product {
+    background: #fffaf1;
+
+    border: 1px solid rgba(120, 70, 30, 0.2);
+
+    overflow: hidden;
+}
+
+
+.product-image-placeholder {
+    height: 190px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #eadcc6;
+
+    font-size: 65px;
+}
+
+
+.customer-product-info {
+    padding: 25px;
+}
+
+
+.product-category {
+    color: #b57b22;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    letter-spacing: 1.5px;
+}
+
+
+.customer-product h3 {
+    color: #4b1118;
+
+    font-family: Georgia, serif;
+
+    font-size: 21px;
+}
+
+
+.customer-product-info > p {
+    color: #66554a;
+
+    line-height: 1.6;
+
+    font-size: 14px;
+}
+
+
+.product-bottom {
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: 25px;
+}
+
+
+.product-bottom strong {
+    color: #4b1118;
+
+    font-size: 18px;
+}
+
+
+.product-bottom button {
+    background: #4b1118;
+
+    color: #e2b75b;
+
+    border: none;
+
+    padding: 10px 14px;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    cursor: pointer;
+
+    letter-spacing: 1px;
+}
+
+
+/* ARTISAN */
+
+.artisan-section {
+    background: #efe5d6;
+}
+
+
+.artisan-feature {
+    display: flex;
+
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 40px;
+
+    background: #fffaf1;
+
+    border: 1px solid rgba(120, 70, 30, 0.2);
+}
+
+
+.artisan-avatar {
+    width: 100px;
+    height: 100px;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 50%;
+
+    background: #4b1118;
+
+    color: #e2b75b;
+
+    font-size: 40px;
+}
+
+
+.artisan-feature h2 {
+    color: #4b1118;
+
+    font-family: Georgia, serif;
+}
+
+
+/* BUTTON */
+
+.outline-btn {
+    padding: 12px 20px;
+
+    border: 1px solid #4b1118;
+
+    background: transparent;
+
+    color: #4b1118;
+
+    font-size: 11px;
+
+    font-weight: bold;
+
+    letter-spacing: 1px;
+
+    cursor: pointer;
+}
+
+
+/* EMPTY STATE */
+
+.empty-state {
+    padding: 60px;
+
+    text-align: center;
+
+    background: #fffaf1;
+
+    border: 1px solid rgba(120, 70, 30, 0.2);
+}
+
+
+.empty-state div {
+    font-size: 40px;
+}
+
+
+.empty-state h3 {
+    color: #4b1118;
+
+    font-family: Georgia, serif;
+
+    font-size: 24px;
+}
+
+
+.empty-state p {
+    color: #66554a;
+}
+
+
+/* PROFILE */
+
+.customer-profile-card {
+    display: flex;
+
+    align-items: center;
+
+    gap: 20px;
+
+    padding: 30px;
+
+    background: #fffaf1;
+
+    border: 1px solid rgba(120, 70, 30, 0.2);
+}
+
+
+.profile-avatar {
+    width: 60px;
+    height: 60px;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    background: #4b1118;
+
+    color: #e2b75b;
+
+    font-size: 25px;
+
+    font-family: Georgia, serif;
+}
+
+
+.customer-profile-card h3 {
+    margin-bottom: 5px;
+
+    color: #4b1118;
+}
+
+
+.customer-profile-card p {
+    color: #66554a;
+}
+
+
+.customer-profile-card .outline-btn {
+    margin-left: auto;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+
+    .customer-main {
+        margin-left: 0;
+    }
+
+    .customer-hero h1 {
+        font-size: 42px;
+    }
+
+}
+
+
+@media (max-width: 600px) {
+
+    .customer-hero,
+    .customer-section {
+        padding-left: 25px;
+        padding-right: 25px;
+    }
+
+
+    .customer-search {
+        flex-direction: column;
+    }
+
+
+    .customer-search button {
+        padding: 15px;
+    }
+
+
+    .artisan-feature,
+    .customer-profile-card {
+        flex-direction: column;
+
+        align-items: flex-start;
+    }
+
+
+    .customer-profile-card .outline-btn {
+        margin-left: 0;
+    }
+
+}
+/* =========================================
+   FIX CUSTOMER PAGE SIDEBAR NAVIGATION
+========================================= */
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    min-width: 230px;
+    height: 100vh;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    overflow-y: auto;
+}
+
+/* Navigation container */
+.sidebar nav,
+.sidebar .navigation,
+.sidebar .nav-links,
+.sidebar ul {
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* List items */
+.sidebar nav li,
+.sidebar .navigation li,
+.sidebar .nav-links li {
+    width: 100% !important;
+
+    display: block !important;
+
+    list-style: none !important;
+
+    margin: 0 !important;
+}
+
+/* Navigation links */
+.sidebar nav a,
+.sidebar .navigation a,
+.sidebar .nav-links a {
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    gap: 14px !important;
+
+    box-sizing: border-box !important;
+
+    white-space: nowrap !important;
+}
+
+/* Prevent icons and text from wrapping */
+.sidebar nav a i,
+.sidebar nav a span,
+.sidebar .navigation a i,
+.sidebar .navigation a span,
+.sidebar .nav-links a i,
+.sidebar .nav-links a span {
+    display: inline-flex !important;
+    align-items: center !important;
+}
+/* =========================================================
+   FINAL HOMEPAGE + NAVIGATION FIX
+   KEEP THIS AT THE VERY END OF style.css
+========================================================= */
+
+/* -------------------------
+   SIDEBAR
+------------------------- */
+
+.sidebar {
+    width: 250px !important;
+    height: 100vh !important;
+
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    padding: 35px 20px !important;
+
+    z-index: 1000 !important;
+
+    overflow-y: auto !important;
+}
+
+
+/* -------------------------
+   NAVIGATION
+------------------------- */
+
+.sidebar .side-nav {
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    gap: 8px !important;
+
+    margin-top: 55px !important;
+    padding: 0 !important;
+}
+
+
+/* Navigation links */
+
+.sidebar .side-nav .nav-item {
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    gap: 13px !important;
+
+    padding: 13px 15px !important;
+
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    white-space: nowrap !important;
+
+    text-decoration: none !important;
+}
+
+
+/* Navigation icons */
+
+.sidebar .side-nav .nav-item span {
+    display: inline-block !important;
+
+    flex-shrink: 0 !important;
+
+    margin-right: 0 !important;
+
+    color: var(--light-gold) !important;
+}
+
+
+/* Active navigation */
+
+.sidebar .side-nav .nav-item.active {
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left: 3px solid var(--gold) !important;
+
+    color: white !important;
+}
+
+
+/* Hover */
+
+.sidebar .side-nav .nav-item:hover {
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left: 3px solid var(--gold) !important;
+
+    color: white !important;
+}
+
+
+/* -------------------------
+   SIDEBAR BOTTOM
+------------------------- */
+
+.sidebar .sidebar-bottom {
+    margin-top: auto !important;
+
+    width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    text-align: center !important;
+
+    padding-top: 25px !important;
+}
+
+
+/* -------------------------
+   LANGUAGE SECTION
+------------------------- */
+
+.sidebar .language-selector {
+    width: 100% !important;
+
+    margin-bottom: 20px !important;
+
+    text-align: center !important;
+}
+
+
+.sidebar .language-buttons {
+    display: flex !important;
+
+    flex-wrap: wrap !important;
+
+    justify-content: center !important;
+
+    align-items: center !important;
+
+    gap: 5px !important;
+
+    width: 100% !important;
+}
+
+
+.sidebar .language-buttons button,
+.sidebar .language-selector button {
+    width: auto !important;
+
+    min-width: 48px !important;
+
+    padding: 6px 9px !important;
+
+    margin: 0 !important;
+
+    font-size: 10px !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* -------------------------
+   DOMAIN SWITCHER
+------------------------- */
+
+.domain-switcher {
+    position: fixed !important;
+
+    top: 20px !important;
+
+    right: 30px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+
+    z-index: 2000 !important;
+
+    border: 1px solid var(--gold) !important;
+
+    background: var(--cream) !important;
+
+    margin: 0 !important;
+}
+
+
+.domain-option {
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 8px !important;
+
+    padding: 11px 22px !important;
+
+    text-decoration: none !important;
+
+    color: var(--maroon) !important;
+
+    background: transparent !important;
+
+    font-size: 11px !important;
+
+    font-weight: bold !important;
+
+    letter-spacing: 1px !important;
+}
+
+
+.domain-option:first-child {
+    border-right: 1px solid var(--gold) !important;
+}
+
+
+.domain-option.active {
+    background: var(--maroon) !important;
+
+    color: var(--light-gold) !important;
+}
+
+
+.domain-option:hover {
+    background: var(--cream-dark) !important;
+}
+
+
+.domain-option.active:hover {
+    background: var(--maroon) !important;
+}
+
+
+/* -------------------------
+   MAIN CONTENT
+------------------------- */
+
+body > main {
+    margin-left: 250px !important;
+
+    width: calc(100% - 250px) !important;
+
+    min-height: 100vh !important;
+
+    display: block !important;
+}
+
+
+/* Homepage sections */
+
+body > main > section {
+    width: 100% !important;
+
+    max-width: none !important;
+
+    float: none !important;
+
+    clear: both !important;
+}
+
+
+/* Hero remains two-column */
+
+body > main > .hero {
+    display: grid !important;
+
+    grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr) !important;
+
+    width: 100% !important;
+}
+
+
+/* -------------------------
+   MOBILE
+------------------------- */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+        width: 230px !important;
+    }
+
+    body > main {
+        margin-left: 230px !important;
+
+        width: calc(100% - 230px) !important;
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        min-height: auto !important;
+    }
+
+
+    body > main {
+        margin-left: 0 !important;
+
+        width: 100% !important;
+    }
+
+
+    body > main > .hero {
+        grid-template-columns: 1fr !important;
+    }
+
+
+    .domain-switcher {
+        position: absolute !important;
+
+        top: 10px !important;
+
+        right: 10px !important;
+    }
+
+}
+/* =========================================================
+   FINAL HOMEPAGE SIDEBAR FIX
+   KEEP THIS AT THE VERY END OF style.css
+========================================================= */
+
+
+/* ================= SIDEBAR ================= */
+
+.sidebar {
+    width: 250px !important;
+    height: 100vh !important;
+
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    padding: 35px 20px !important;
+
+    overflow-y: auto !important;
+
+    z-index: 1000 !important;
+}
+
+
+/* ================= BRAND ================= */
+
+.sidebar .brand {
+    width: 100% !important;
+
+    display: block !important;
+
+    text-align: center !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+.sidebar .brand-symbol {
+    width: 58px !important;
+    height: 58px !important;
+
+    margin: 0 auto !important;
+
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+
+.sidebar .brand-name {
+    display: block !important;
+
+    width: 100% !important;
+
+    margin-top: 15px !important;
+
+    text-align: center !important;
+}
+
+
+.sidebar .brand-subtitle {
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: center !important;
+}
+
+
+.sidebar .brand-star {
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+.sidebar .navigation {
+    width: 100% !important;
+
+    margin-top: 40px !important;
+    padding: 0 !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    gap: 6px !important;
+}
+
+
+/* EACH NAVIGATION LINK */
+
+.sidebar .navigation .nav-link,
+.sidebar .navigation .nav-link:link,
+.sidebar .navigation .nav-link:visited {
+
+    width: 100% !important;
+    min-height: 45px !important;
+
+    display: flex !important;
+    flex-direction: row !important;
+
+    align-items: center !important;
+    justify-content: flex-start !important;
+
+    gap: 13px !important;
+
+    padding: 12px 14px !important;
+    margin: 0 !important;
+
+    box-sizing: border-box !important;
+
+    border: none !important;
+    border-left: 3px solid transparent !important;
+
+    background: transparent !important;
+
+    color: #ead9c0 !important;
+
+    text-decoration: none !important;
+
+    white-space: nowrap !important;
+
+    font-size: 14px !important;
+
+    line-height: 1.2 !important;
+}
+
+
+/* NAVIGATION ICON */
+
+.sidebar .navigation .nav-link .nav-icon {
+
+    width: 18px !important;
+    min-width: 18px !important;
+
+    display: flex !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    color: var(--gold) !important;
+
+    font-size: 16px !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+/* NAVIGATION TEXT */
+
+.sidebar .navigation .nav-link .nav-text {
+
+    display: block !important;
+
+    color: inherit !important;
+
+    margin: 0 !important;
+
+    padding: 0 !important;
+
+    text-decoration: none !important;
+}
+
+
+/* HOVER */
+
+.sidebar .navigation .nav-link:hover {
+
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left-color: var(--gold) !important;
+
+    color: #ffffff !important;
+
+    text-decoration: none !important;
+}
+
+
+/* ACTIVE */
+
+.sidebar .navigation .nav-link.active {
+
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left-color: var(--gold) !important;
+
+    color: #ffffff !important;
+}
+
+
+/* KEEP ICON GOLD EVEN WHEN ACTIVE */
+
+.sidebar .navigation .nav-link.active .nav-icon,
+.sidebar .navigation .nav-link:hover .nav-icon {
+
+    color: var(--gold) !important;
+}
+
+
+/* =========================================================
+   SIDEBAR BOTTOM
+========================================================= */
+
+.sidebar .sidebar-bottom {
+
+    width: 100% !important;
+
+    margin-top: auto !important;
+
+    padding-top: 25px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    text-align: center !important;
+
+    border-top: 1px solid rgba(226, 183, 91, 0.35) !important;
+}
+
+
+/* =========================================================
+   LANGUAGE SECTION
+========================================================= */
+
+.sidebar .language-selector {
+
+    width: 100% !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    align-items: center !important;
+
+    margin-bottom: 20px !important;
+
+    text-align: center !important;
+}
+
+
+.sidebar .language-title {
+
+    display: block !important;
+
+    margin-bottom: 12px !important;
+
+    color: var(--light-gold) !important;
+
+    font-size: 9px !important;
+
+    letter-spacing: 3px !important;
+}
+
+
+.sidebar .language-buttons {
+
+    width: 100% !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    flex-wrap: wrap !important;
+
+    justify-content: center !important;
+
+    align-items: center !important;
+
+    gap: 6px !important;
+}
+
+
+.sidebar .language-buttons button {
+
+    display: inline-flex !important;
+
+    width: auto !important;
+
+    min-width: 48px !important;
+
+    height: auto !important;
+
+    padding: 7px 10px !important;
+
+    margin: 0 !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    background: transparent !important;
+
+    border: 1px solid var(--gold) !important;
+
+    color: var(--light-gold) !important;
+
+    white-space: nowrap !important;
+
+    cursor: pointer !important;
+
+    font-size: 10px !important;
+}
+
+
+.sidebar .language-buttons button:hover,
+.sidebar .language-buttons button.active {
+
+    background: var(--gold) !important;
+
+    color: var(--maroon) !important;
+}
+
+
+/* =========================================================
+   BOTTOM CONTENT
+========================================================= */
+
+.sidebar .small-star {
+
+    display: block !important;
+
+    margin: 10px 0 !important;
+
+    color: var(--gold) !important;
+
+    font-size: 28px !important;
+}
+
+
+.sidebar .sidebar-bottom p {
+
+    display: block !important;
+
+    margin: 5px 0 15px !important;
+
+    color: var(--cream) !important;
+
+    font-size: 12px !important;
+
+    letter-spacing: 1px !important;
+
+    text-align: center !important;
+}
+
+
+.sidebar .sidebar-button {
+
+    width: 100% !important;
+
+    display: block !important;
+
+    padding: 13px !important;
+
+    box-sizing: border-box !important;
+
+    text-align: center !important;
+
+    text-decoration: none !important;
+}
+
+
+/* =========================================================
+   MAIN CONTENT
+========================================================= */
+
+.main-content {
+
+    margin-left: 250px !important;
+
+    width: calc(100% - 250px) !important;
+
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 900px) {
+
+    .sidebar {
+
+        width: 220px !important;
+
+        padding: 25px 15px !important;
+
+    }
+
+
+    .main-content {
+
+        margin-left: 220px !important;
+
+        width: calc(100% - 220px) !important;
+
+    }
+
+}
+
+
+@media (max-width: 700px) {
+
+    .sidebar {
+
+        position: relative !important;
+
+        width: 100% !important;
+
+        height: auto !important;
+
+        min-height: auto !important;
+
+    }
+
+
+    .main-content {
+
+        margin-left: 0 !important;
+
+        width: 100% !important;
+
+    }
+
+}
+/* =========================================================
+   FINAL CUSTOMER PAGE SIDEBAR
+   EXACT SAME DESIGN AS MAIN TEDKRAFT SIDEBAR
+========================================================= */
+
+.customer-page .sidebar {
+    width: 250px !important;
+    min-width: 250px !important;
+
+    height: 100vh !important;
+
+    position: fixed !important;
+
+    top: 0 !important;
+    left: 0 !important;
+
+    z-index: 1000 !important;
+
+    padding: 35px 20px !important;
+
+    display: flex !important;
+    flex-direction: column !important;
+
+    background: linear-gradient(
+        180deg,
+        #4b1118,
+        #2d0b10
+    ) !important;
+
+    border-right: 2px solid #c58a2b !important;
+
+    overflow-y: auto !important;
+}
+
+
+/* =========================================================
+   CUSTOMER BRAND
+========================================================= */
+
+.customer-page .sidebar .brand {
+    display: block !important;
+
+    width: 100% !important;
+
+    text-align: center !important;
+
+    flex-shrink: 0 !important;
+}
+
+
+.customer-page .sidebar .brand-symbol {
+    width: 58px !important;
+    height: 58px !important;
+
+    margin: 0 auto !important;
+
+    display: grid !important;
+
+    place-items: center !important;
+
+    border-radius: 50% !important;
+
+    border: 2px solid #e2b75b !important;
+
+    color: #e2b75b !important;
+
+    font-size: 30px !important;
+}
+
+
+.customer-page .sidebar .brand-name {
+    display: block !important;
+
+    margin-top: 15px !important;
+
+    color: #f5ead7 !important;
+
+    font-size: 24px !important;
+
+    font-weight: bold !important;
+
+    letter-spacing: 2px !important;
+
+    text-align: center !important;
+}
+
+
+.customer-page .sidebar .brand-subtitle {
+    display: block !important;
+
+    margin-top: 5px !important;
+
+    color: #e2b75b !important;
+
+    font-size: 9px !important;
+
+    letter-spacing: 2px !important;
+
+    text-align: center !important;
+}
+
+
+.customer-page .sidebar .brand-star {
+    display: block !important;
+
+    margin-top: 15px !important;
+
+    color: #c58a2b !important;
+
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   CUSTOMER NAVIGATION
+========================================================= */
+
+.customer-page .navigation {
+    width: 100% !important;
+
+    margin-top: 55px !important;
+
+    padding: 0 !important;
+
+    display: flex !important;
+
+    flex-direction: column !important;
+
+    align-items: stretch !important;
+
+    gap: 8px !important;
+}
+
+
+/* EACH LINK */
+
+.customer-page .navigation .nav-link {
+    width: 100% !important;
+
+    min-height: 44px !important;
+
+    display: flex !important;
+
+    flex-direction: row !important;
+
+    align-items: center !important;
+
+    justify-content: flex-start !important;
+
+    gap: 13px !important;
+
+    padding: 13px 15px !important;
+
+    box-sizing: border-box !important;
+
+    border-left: 3px solid transparent !important;
+
+    color: #ead9c0 !important;
+
+    background: transparent !important;
+
+    text-decoration: none !important;
+
+    font-size: 14px !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* ICON */
+
+.customer-page .navigation .nav-link .nav-icon {
+    display: inline-block !important;
+
+    width: 16px !important;
+
+    min-width: 16px !important;
+
+    flex-shrink: 0 !important;
+
+    color: #e2b75b !important;
+
+    text-align: center !important;
+}
+
+
+/* TEXT */
+
+.customer-page .navigation .nav-link .nav-text {
+    display: inline-block !important;
+
+    flex: 1 !important;
+
+    color: inherit !important;
+
+    white-space: nowrap !important;
+}
+
+
+/* ACTIVE */
+
+.customer-page .navigation .nav-link.active {
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left-color: #c58a2b !important;
+
+    color: white !important;
+}
+
+
+/* HOVER */
+
+.customer-page .navigation .nav-link:hover {
+    background: rgba(197, 138, 43, 0.12) !important;
+
+    border-left-color: #c58a2b !important;
+
+    color: white !important;
+}
+
+
+/* =========================================================
+   CUSTOMER SIDEBAR BOTTOM
+========================================================= */
+
+.customer-page .sidebar-bottom {
+    width: 100% !important;
+
+    margin-top: auto !important;
+
+    padding-top: 30px !important;
+
+    border-top: 1px solid rgba(226, 183, 91, 0.35) !important;
+
+    text-align: center !important;
+}
+
+
+.customer-page .sidebar-bottom .small-star {
+    display: block !important;
+
+    color: #c58a2b !important;
+
+    font-size: 35px !important;
+
+    margin-bottom: 15px !important;
+}
+
+
+.customer-page .sidebar-bottom p {
+    display: block !important;
+
+    margin: 0 0 20px !important;
+
+    color: #f5ead7 !important;
+
+    font-size: 10px !important;
+
+    letter-spacing: 1px !important;
+}
+
+
+.customer-page .sidebar-bottom .sidebar-button {
+    width: 100% !important;
+
+    display: block !important;
+
+    padding: 13px !important;
+
+    border: 1px solid #e2b75b !important;
+
+    color: #e2b75b !important;
+
+    background: transparent !important;
+
+    text-decoration: none !important;
+
+    font-size: 11px !important;
+
+    text-align: center !important;
+}
+
+
+.customer-page .sidebar-bottom .sidebar-button:hover {
+    background: #c58a2b !important;
+
+    color: #4b1118 !important;
+}
+
+
+/* =========================================================
+   CUSTOMER MAIN AREA
+========================================================= */
+
+.customer-page .customer-main {
+    margin-left: 250px !important;
+
+    width: calc(100% - 250px) !important;
+
+    min-height: 100vh !important;
+
+    display: block !important;
+}
+
+
+/* =========================================================
+   DOMAIN SWITCHER
+========================================================= */
+
+.customer-page .domain-switcher {
+    position: fixed !important;
+
+    top: 20px !important;
+
+    right: 30px !important;
+
+    display: flex !important;
+
+    z-index: 3000 !important;
+
+    border: 1px solid #c58a2b !important;
+
+    background: #f5ead7 !important;
+}
+
+
+.customer-page .domain-option {
+    display: flex !important;
+
+    align-items: center !important;
+
+    justify-content: center !important;
+
+    gap: 8px !important;
+
+    padding: 11px 22px !important;
+
+    color: #4b1118 !important;
+
+    background: transparent !important;
+
+    text-decoration: none !important;
+
+    font-size: 11px !important;
+
+    font-weight: bold !important;
+
+    letter-spacing: 1px !important;
+}
+
+
+.customer-page .domain-option:first-child {
+    border-right: 1px solid #c58a2b !important;
+}
+
+
+.customer-page .domain-option.active {
+    background: #4b1118 !important;
+
+    color: #e2b75b !important;
+}
+
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 700px) {
+
+    .customer-page .sidebar {
+        position: relative !important;
+
+        width: 100% !important;
+
+        min-width: 100% !important;
+
+        height: auto !important;
+    }
+
+
+    .customer-page .customer-main {
+        margin-left: 0 !important;
+
+        width: 100% !important;
+    }
+
+
+    .customer-page .domain-switcher {
+        position: absolute !important;
+
+        top: 10px !important;
+
+        right: 10px !important;
+    }
+
+}
+/* =========================================
+    
+
+/* =========================================================
+   TEDKRAFT CUSTOMER UI/UX POLISH — PRESERVE ORIGINAL STRUCTURE
+   Visual enhancement only. No HTML/content/functionality removed.
+========================================================= */
+
+.customer-page {
+    min-height: 100vh;
+    background: #f5ead7;
+}
+
+.customer-page .customer-main {
+    min-height: 100vh;
+    background: linear-gradient(180deg, #f5ead7 0%, #f9efdf 48%, #f5ead7 100%);
+}
+
+.customer-page .domain-switcher {
+    box-shadow: 0 8px 24px rgba(45,11,16,.10);
+    backdrop-filter: blur(6px);
+}
+
+.customer-page .customer-hero {
+    position: relative;
+    min-height: 430px;
+    padding: 85px 7% 70px;
+    display: grid;
+    place-items: center;
+    text-align: center;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+    background:
+        radial-gradient(circle at 15% 30%, rgba(197,138,43,.13), transparent 28%),
+        radial-gradient(circle at 85% 65%, rgba(21,91,89,.08), transparent 30%),
+        #f5ead7;
+}
+
+.customer-page .customer-hero::before,
+.customer-page .customer-hero::after {
+    content: "";
+    position: absolute;
+    width: 170px;
+    height: 170px;
+    border: 1px solid rgba(197,138,43,.35);
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+.customer-page .customer-hero::before { left: -70px; top: 80px; }
+.customer-page .customer-hero::after { right: -70px; bottom: 45px; }
+
+.customer-page .customer-hero > * {
+    position: relative;
+    z-index: 1;
+}
+
+.customer-page .top-ornament {
+    color: var(--gold);
+    font-size: 25px;
+    margin-bottom: 12px;
+}
+
+.customer-page .eyebrow {
+    color: var(--teal);
+    letter-spacing: 4px;
+    font-size: 11px;
+    margin: 12px 0;
+}
+
+.customer-page .customer-hero h1 {
+    margin: 8px auto 15px;
+    max-width: 900px;
+    font-family: "Cinzel Decorative", serif;
+    font-size: clamp(40px, 6vw, 78px);
+    line-height: 1.05;
+    letter-spacing: 2px;
+    color: var(--maroon);
+}
+
+.customer-page .customer-hero-text {
+    max-width: 650px;
+    margin: 0 auto;
+    color: var(--muted);
+    font-size: 15px;
+    line-height: 1.75;
+}
+
+.customer-page .customer-search {
+    width: min(680px, 100%);
+    margin: 28px auto 0;
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    border: 1px solid var(--gold);
+    background: rgba(255,255,255,.48);
+    box-shadow: 0 12px 28px rgba(45,11,16,.08);
+}
+
+.customer-page .customer-search input {
+    flex: 1;
+    min-width: 0;
+    height: 45px;
+    padding: 0 15px;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--brown);
+    font: 14px "Times New Roman", serif;
+}
+
+.customer-page .customer-search button {
+    height: 45px;
+    padding: 0 20px;
+    border: 1px solid var(--maroon);
+    background: var(--maroon);
+    color: var(--light-gold);
+    font: 700 11px "Times New Roman", serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.customer-page .customer-search button:hover {
+    background: var(--gold);
+    color: var(--maroon);
+}
+
+.customer-page .customer-section {
+    padding: 78px 7%;
+    border-bottom: 1px solid rgba(210,179,123,.65);
+}
+
+.customer-page .customer-section:nth-of-type(even) {
+    background: #f9efdf;
+}
+
+.customer-page .section-heading {
+    max-width: 850px;
+    margin: 0 auto 35px;
+    text-align: center;
+}
+
+.customer-page .section-heading h2 {
+    margin: 8px 0 10px;
+    color: var(--maroon);
+    font-family: "Cinzel", serif;
+    font-size: clamp(27px, 3vw, 38px);
+}
+
+.customer-page .section-heading p {
+    max-width: 620px;
+    margin: auto;
+    color: var(--muted);
+    line-height: 1.6;
+    font-size: 13px;
+}
+
+.customer-page .category-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.customer-page .category-card {
+    min-height: 155px;
+    padding: 25px 18px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 1px solid var(--border);
+    background: #f5ead7;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.customer-page .category-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 14px 30px rgba(45,11,16,.10);
+}
+
+.customer-page .category-icon {
+    width: 55px;
+    height: 55px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 15px;
+    border: 1px solid var(--gold);
+    color: var(--teal);
+    font-size: 22px;
+    background: rgba(197,138,43,.05);
+}
+
+.customer-page .category-card h3 {
+    color: var(--maroon);
+    font-family: "Cinzel", serif;
+    font-size: 17px;
+    margin-bottom: 6px;
+}
+
+.customer-page .category-card p {
+    color: var(--muted);
+    font-size: 11px;
+}
+
+.customer-page .product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 1200px;
+    margin: auto;
+}
+
+.customer-page .customer-product {
+    overflow: hidden;
+    border: 1px solid var(--border);
+    background: #f9efdf;
+    transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+}
+
+.customer-page .customer-product:hover {
+    transform: translateY(-5px);
+    border-color: var(--gold);
+    box-shadow: 0 16px 34px rgba(45,11,16,.11);
+}
+
+.customer-page .product-image-placeholder {
+    height: 230px;
+    display: grid;
+    place-items: center;
+    position: relative;
+    overflow: hidden;
+    background:
+        linear-gradient(135deg, rgba(197,138,43,.10), transparent),
+        #ead8bd;
+    color: var(--teal);
+}
+
+.customer-page .product-image-placeholder img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform .45s ease;
+}
+
+.customer-page .customer-product:hover .product-image-placeholder img {
+    transform: scale(1.04);
+}
+
+.customer-page .customer-product-info {
+    padding: 20px;
+}
+
+.customer-page .product-category {
+    color: var(--gold);
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.customer-page .customer-product-info h3 {
+    margin: 7px 0;
+    color: var(--maroon);
+    font-family: "Cinzel", serif;
+    font-size: 18px;
+}
+
+.customer-page .customer-product-info p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.55;
+}
+
+.customer-page .product-bottom {
+    margin-top: 16px;
+    padding-top: 13px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.customer-page .product-bottom strong {
+    color: var(--maroon);
+    font-size: 19px;
+}
+
+.customer-page .product-bottom button {
+    padding: 9px 13px;
+    border: 1px solid var(--gold);
+    background: var(--maroon);
+    color: var(--light-gold);
+    font: 700 9px "Times New Roman", serif;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: .25s ease;
+}
+
+.customer-page .product-bottom button:hover {
+    background: var(--gold);
+    color: var(--maroon);
+}
+
+.customer-page .artisan-feature {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    padding: 35px 40px;
+    max-width: 1000px;
+    margin: auto;
+    border: 1px solid var(--border);
+    background: #f9efdf;
+    box-shadow: 0 12px 30px rgba(45,11,16,.07);
+}
+
+.customer-page .artisan-avatar {
+    width: 120px;
+    height: 120px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: #ead8bd;
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    font-size: 40px;
+}
+.customer-page .artisan-feature > div:last-child {
+    flex: 1;
+}
+
+.customer-page .artisan-feature h2 {
+    margin: 6px 0;
+    color: var(--maroon);
+    font-family: "Cinzel", serif;
+}
+
+.customer-page .artisan-feature p {
+    margin-bottom: 12px;
+    color: var(--brown);
+    line-height: 1.6;
+}
+
+.customer-page .artisan-avatar,
+.customer-page .profile-avatar {
+    overflow: hidden;
+    background: #ead8bd;
+    border: 1px solid var(--gold);
+}
+
+.customer-page .artisan-avatar {
+    width: 210px;
+    height: 210px;
+}
+
+.customer-page .artisan-avatar img,
+.customer-page .profile-avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.customer-page .customer-profile-card {
+    padding: 25px;
+    display: flex;
+    align-items: center;
+    gap: 22px;
+}
+
+.customer-page .profile-avatar {
+    width: 90px;
+    height: 90px;
+    flex-shrink: 0;
+}
+
+.customer-page .empty-state {
+    padding: 45px 25px;
+    text-align: center;
+    color: var(--muted);
+}
+
+.customer-page .empty-state strong {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--maroon);
+    font-family: "Cinzel", serif;
+    font-size: 20px;
+}
+
+.customer-page .outline-btn {
+    transition: .25s ease;
+}
+
+.customer-page .outline-btn:hover {
+    transform: translateY(-2px);
+}
+
+@media (max-width: 1000px) {
+    .customer-page .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .customer-page .product-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+    .customer-page .customer-hero {
+        min-height: 430px;
+        padding: 90px 20px 55px;
+    }
+    .customer-page .customer-hero h1 { font-size: 39px; }
+    .customer-page .customer-hero-text { font-size: 13px; }
+    .customer-page .customer-search { display: grid; gap: 5px; padding: 5px; }
+    .customer-page .customer-search button { width: 100%; }
+    .customer-page .customer-section { padding: 55px 20px; }
+    .customer-page .category-grid,
+    .customer-page .product-grid { grid-template-columns: 1fr; }
+    .customer-page .artisan-feature { grid-template-columns: 1fr; text-align: center; }
+    .customer-page .artisan-avatar { width: 100%; height: 230px; }
+    .customer-page .customer-profile-card { flex-direction: column; text-align: center; }
+}
+
+</style>
+   
+
+</head>
+
+
+<body class="customer-page">
+<!-- =========================================================
+     TEDKRAFT BOOT SCREEN
+========================================================= -->
+
+<div id="tedkraftBoot" class="tedkraft-boot">
+
+    <!-- LEFT PAPER -->
+    <div class="boot-paper boot-paper-left"></div>
+
+    <!-- RIGHT PAPER -->
+    <div class="boot-paper boot-paper-right"></div>
+
+
+    <!-- CENTER BRAND -->
+    <div class="boot-brand">
+
+        <div class="boot-symbol">T</div>
+
+        <h1>TEDKRAFT</h1>
+
+        <div class="boot-line">
+            <span></span>
+            <p>INDIAN CRAFT × MODERN TECHNOLOGY</p>
+            <span></span>
+        </div>
+
+    </div>
+
+
+    <!-- INITIALIZATION STATUS -->
+    <div class="boot-status">
+
+        <div class="boot-status-label">
+            <span id="bootStatus">INITIALIZING</span>
+            <span id="bootPercent">0%</span>
+        </div>
+
+        <div class="boot-progress">
+            <div id="bootProgressBar"></div>
+        </div>
+
+    </div>
+
+
+    <!-- SMALL CHANGING TEXT -->
+    <div class="boot-message" id="bootMessage">
+        Preserving India's handmade heritage.
+    </div>
+
+
+    <!-- INDIAN DECORATIVE ELEMENT -->
+    <div class="boot-decoration">
+
+        <div class="mandala-ring ring-one"></div>
+        <div class="mandala-ring ring-two"></div>
+
+        <div class="mandala-center">✦</div>
+
+    </div>
+
+</div>
+
+    <!-- ================= DOMAIN SWITCHER ================= -->
+
+    <div class="domain-switcher">
+
+    <a
+        href="dashboard.html"
+        class="domain-option"
+    >
+        <span>🧑‍🎨</span>
+        ARTISAN
+    </a>
+
+    <a
+        href="customer.html"
+        class="domain-option active"
+    >
+        <span>🛍️</span>
+        CUSTOMER
+    </a>
+
+</div>
+
+
+
+    <!-- ================= SIDEBAR ================= -->
+
+   <aside class="sidebar">
+
+    <div class="brand">
+
+        <div class="brand-symbol">
+            T
+        </div>
+
+        <h1 data-no-translate>TEDKRAFT</h1>
+
+        <p data-no-translate>AI FOR ARTISANS</p>
+
+        <div class="brand-line">
+            ✦
+        </div>
+
+    </div>
+
+
+    <nav class="side-nav">
+
+        <a href="index.html#home" class="nav-item">
+            <span>⌂</span>
+            Home
+        </a>
+
+        <a href="index.html#problem" class="nav-item">
+            <span>◇</span>
+            The Problem
+        </a>
+
+        <a href="index.html#features" class="nav-item">
+            <span>✦</span>
+            AI Features
+        </a>
+
+        <a href="index.html#workflow" class="nav-item">
+            <span>◎</span>
+            How It Works
+        </a>
+
+        <a href="index.html#market" class="nav-item">
+            <span>♧</span>
+            Market Linkage
+        </a>
+
+        <a href="dashboard.html" class="nav-item">
+            <span>▣</span>
+            Dashboard
+        </a>
+
+    </nav>
+
+
+  <div class="sidebar-bottom">
+
+    <!-- LANGUAGE SELECTOR -->
+    <div class="language-selector" data-no-translate>
+
+        <div class="language-title">
+            LANGUAGE
+        </div>
+
+        <div class="language-buttons">
+
+            <button type="button"
+                    data-language="ta"
+                    onclick="changeLanguage('ta')">
+                தமிழ்
+            </button>
+
+            <button type="button"
+                    data-language="en"
+                    onclick="changeLanguage('en')">
+                English
+            </button>
+
+            <button type="button"
+                    data-language="hi"
+                    onclick="changeLanguage('hi')">
+                हिन्दी
+            </button>
+
+            <button type="button"
+                    data-language="kn"
+                    onclick="changeLanguage('kn')">
+                ಕನ್ನಡ
+            </button>
+
+            <button type="button"
+                    data-language="te"
+                    onclick="changeLanguage('te')">
+                తెలుగు
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="mandala">
+        ✧
+    </div>
+
+    <p>READY TO GROW?</p>
+
+    <button onclick="openDemo()">
+        HOME →
+    </button>
+
+</div>
+</aside>
+
+
+
+    <!-- ================= MAIN CONTENT ================= -->
+
+    <main class="customer-main">
+
+
+
+        <!-- ================= HERO ================= -->
+
+        <section
+            id="discover"
+            class="customer-hero"
+        >
+
+            <div class="top-ornament">
+                ✦
+            </div>
+
+
+            <p class="eyebrow">
+                DISCOVER INDIA'S HANDMADE HERITAGE
+            </p>
+
+
+            <h1>
+                Discover the story
+                <span>behind every craft.</span>
+            </h1>
+
+
+            <p class="customer-hero-text">
+
+                Explore authentic handmade products created
+                by skilled artisans and discover the stories,
+                traditions and craftsmanship behind every creation.
+
+            </p>
+
+
+
+            <!-- SEARCH -->
+
+            <div class="customer-search">
+
+                <input
+                    type="text"
+                    id="productSearch"
+                    placeholder="Search for handmade crafts..."
+                >
+
+                <button onclick="searchProducts()">
+                    SEARCH →
+                </button>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- ================= CATEGORIES ================= -->
+
+        <section
+            id="categories"
+            class="customer-section"
+        >
+
+            <div class="section-heading">
+
+                <p>EXPLORE</p>
+
+                <h2>
+                    Shop by Craft
+                </h2>
+
+            </div>
+
+
+            <div class="category-grid">
+
+
+                <div class="category-card">
+                    <div class="category-icon">🧺</div>
+
+                    <h3>Bamboo Crafts</h3>
+
+                    <p>
+                        Handmade bamboo products
+                        crafted with tradition.
+                    </p>
+                </div>
+
+
+
+                <div class="category-card">
+                    <div class="category-icon">🏺</div>
+
+                    <h3>Pottery</h3>
+
+                    <p>
+                        Traditional handmade pottery
+                        and ceramic crafts.
+                    </p>
+                </div>
+
+
+
+                <div class="category-card">
+                    <div class="category-icon">🧵</div>
+
+                    <h3>Handloom</h3>
+
+                    <p>
+                        Traditional fabrics and
+                        handwoven creations.
+                    </p>
+                </div>
+
+
+
+                <div class="category-card">
+                    <div class="category-icon">🪵</div>
+
+                    <h3>Wood Crafts</h3>
+
+                    <p>
+                        Beautiful handmade wooden
+                        products and artwork.
+                    </p>
+                </div>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= FEATURED PRODUCTS ================= -->
+
+        <section class="customer-section">
+
+            <div class="section-heading">
+
+                <p>FEATURED CRAFTS</p>
+
+                <h2>
+                    Discover Unique Creations
+                </h2>
+
+            </div>
+
+
+
+            <div class="product-grid">
+
+
+
+                <!-- PRODUCT 1 -->
+
+                <article class="customer-product">
+
+                    <div class="product-image-placeholder">
+                        🧺
+                    </div>
+
+
+                    <div class="customer-product-info">
+
+                        <p class="product-category">
+                            BAMBOO CRAFT
+                        </p>
+
+
+                        <h3>
+                            Traditional Bamboo Basket
+                        </h3>
+
+
+                        <p>
+                            Handwoven by skilled artisans
+                            using traditional bamboo techniques.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹850
+                            </strong>
+
+
+                            <button
+                                onclick="addToCart('Traditional Bamboo Basket')"
+                            >
+                                ADD TO CART
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 2 -->
+
+                <article class="customer-product">
+
+                    <div class="product-image-placeholder">
+                        🏺
+                    </div>
+
+
+                    <div class="customer-product-info">
+
+                        <p class="product-category">
+                            POTTERY
+                        </p>
+
+
+                        <h3>
+                            Handmade Terracotta Pot
+                        </h3>
+
+
+                        <p>
+                            A traditional handcrafted piece
+                            made using natural clay.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹1,200
+                            </strong>
+
+
+                            <button
+                                onclick="addToCart('Handmade Terracotta Pot')"
+                            >
+                                ADD TO CART
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+                <!-- PRODUCT 3 -->
+
+                <article class="customer-product">
+
+                    <div class="product-image-placeholder">
+                        🧵
+                    </div>
+
+
+                    <div class="customer-product-info">
+
+                        <p class="product-category">
+                            HANDLOOM
+                        </p>
+
+
+                        <h3>
+                            Traditional Cotton Weave
+                        </h3>
+
+
+                        <p>
+                            Handwoven using traditional
+                            techniques and natural fibres.
+                        </p>
+
+
+                        <div class="product-bottom">
+
+                            <strong>
+                                ₹1,500
+                            </strong>
+
+
+                            <button
+                                onclick="addToCart('Traditional Cotton Weave')"
+                            >
+                                ADD TO CART
+                            </button>
+
+                        </div>
+
+                    </div>
+
+                </article>
+
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ARTISANS ================= -->
+
+        <section
+            id="artisans"
+            class="customer-section artisan-section"
+        >
+
+            <div class="section-heading">
+
+                <p>MEET THE MAKERS</p>
+
+                <h2>
+                    Stories Behind the Craft
+                </h2>
+
+            </div>
+
+
+            <div class="artisan-feature">
+
+                <div class="artisan-avatar">
+                    ✦
+                </div>
+
+
+                <div>
+
+                    <p class="product-category">
+                        FEATURED ARTISAN
+                    </p>
+
+
+                    <h2>
+                        Meet the Creator
+                    </h2>
+
+
+                    <p>
+
+                        Every handmade product carries
+                        the knowledge, culture and story
+                        of the artisan who created it.
+
+                    </p>
+
+
+                    <button class="outline-btn">
+                        VIEW ARTISAN STORY →
+                    </button>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= ORDERS ================= -->
+
+        <section
+            id="orders"
+            class="customer-section"
+        >
+
+            <div class="section-heading">
+
+                <p>MY PURCHASES</p>
+
+                <h2>
+                    Orders
+                </h2>
+
+            </div>
+
+
+            <div class="empty-state">
+
+                <div>
+                    📦
+                </div>
+
+
+                <h3>
+                    No orders yet
+                </h3>
+
+
+                <p>
+                    Start exploring handmade products
+                    and support talented artisans.
+                </p>
+
+            </div>
+
+        </section>
+
+
+
+        <!-- ================= PROFILE ================= -->
+
+        <section
+            id="profile"
+            class="customer-section"
+        >
+
+            <div class="section-heading">
+
+                <p>MY ACCOUNT</p>
+
+                <h2>
+                    Customer Profile
+                </h2>
+
+            </div>
+
+
+            <div class="customer-profile-card">
+
+                <div class="profile-avatar">
+                    C
+                </div>
+
+
+                <div>
+
+                    <h3>
+                        Customer
+                    </h3>
+
+
+                    <p>
+                        Discover • Support • Preserve Craft
+                    </p>
+
+                </div>
+
+
+                <button class="outline-btn">
+                    EDIT PROFILE
+                </button>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+
+    <script src="script.js"></script>
+
+<script>
+
+/* =========================================================
+   TEDKRAFT BOOT ENGINE
+========================================================= */
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const boot =
+        document.getElementById("tedkraftBoot");
+
+    const progress =
+        document.getElementById("bootProgressBar");
+
+    const percent =
+        document.getElementById("bootPercent");
+
+    const status =
+        document.getElementById("bootStatus");
+
+    const message =
+        document.getElementById("bootMessage");
+
+
+    if (!boot) return;
+
+
+    /* ========================================
+       BOOT MESSAGES
+    ======================================== */
+
+    const bootMessages = [
+
+        {
+            text: "Preserving India's handmade heritage.",
+            status: "INITIALIZING"
+        },
+
+        {
+            text: "Connecting artisan stories.",
+            status: "HERITAGE DATABASE"
+        },
+
+        {
+            text: "Preparing craft intelligence.",
+            status: "AI ENGINE"
+        },
+
+        {
+            text: "Connecting makers with markets.",
+            status: "ARTISAN NETWORK"
+        },
+
+        {
+            text: "TEDKRAFT is ready.",
+            status: "WELCOME"
+
+        }
+
+    ];
+
+
+    /* ========================================
+       PROGRESS
+    ======================================== */
+
+    let currentProgress = 0;
+
+    let messageIndex = 0;
+
+
+    const progressTimer =
+        setInterval(() => {
+
+            currentProgress +=
+                Math.floor(
+                    Math.random() * 8
+                ) + 3;
+
+
+            if (currentProgress >= 100) {
+
+                currentProgress = 100;
+
+                clearInterval(progressTimer);
+
+            }
+
+
+            progress.style.width =
+                currentProgress + "%";
+
+
+            percent.textContent =
+                currentProgress + "%";
+
+
+            /* Change message */
+
+            if (
+                currentProgress >= 20 &&
+                messageIndex < 1
+            ) {
+
+                messageIndex = 1;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 45 &&
+                messageIndex < 2
+            ) {
+
+                messageIndex = 2;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 70 &&
+                messageIndex < 3
+            ) {
+
+                messageIndex = 3;
+
+                changeMessage();
+
+            }
+
+
+            if (
+                currentProgress >= 90 &&
+                messageIndex < 4
+            ) {
+
+                messageIndex = 4;
+
+                changeMessage();
+
+            }
+
+
+        }, 150);
+
+
+    /* ========================================
+       MESSAGE ANIMATION
+    ======================================== */
+
+    function changeMessage() {
+
+        message.style.opacity = "0";
+
+
+        setTimeout(() => {
+
+            const item =
+                bootMessages[messageIndex];
+
+
+            message.textContent =
+                item.text;
+
+
+            status.textContent =
+                item.status;
+
+
+            message.style.opacity = ".8";
+
+
+        }, 250);
+
+    }
+
+
+    /* ========================================
+       START TEAR
+    ======================================== */
+
+    setTimeout(() => {
+
+        boot.classList.add("boot-tearing");
+
+    }, 2200);
+
+
+    /* ========================================
+       REMOVE BOOT SCREEN
+    ======================================== */
+
+    setTimeout(() => {
+
+        boot.classList.add("boot-finished");
+
+
+        setTimeout(() => {
+
+            boot.remove();
+
+        }, 550);
+
+    }, 4100);
+
+
+});
+
+</script>
+</body>
+
+</html>

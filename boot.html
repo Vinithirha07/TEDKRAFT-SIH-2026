@@ -1,0 +1,1975 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>TEDKRAFT — Initializing</title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+
+        /* =====================================================
+           TEDKRAFT BOOT SCREEN
+        ===================================================== */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+
+        :root {
+
+            --paper: #f3e5cf;
+            --paper-dark: #e5cda9;
+
+            --maroon: #57141d;
+            --maroon-light: #70232c;
+
+            --gold: #c58a24;
+            --gold-light: #dfb65d;
+
+            --teal: #315b58;
+
+            --brown: #7a563d;
+
+        }
+
+
+        html,
+        body {
+
+            width: 100%;
+            height: 100%;
+
+            overflow: hidden;
+
+        }
+
+
+        body {
+
+            background:
+                radial-gradient(
+                    circle at 50% 45%,
+                    rgba(255,255,255,0.45),
+                    transparent 45%
+                ),
+                linear-gradient(
+                    135deg,
+                    #ead5b7,
+                    #f5e8d2 45%,
+                    #e7ceb0
+                );
+
+            font-family:
+                Georgia,
+                "Times New Roman",
+                serif;
+
+            color: var(--maroon);
+
+        }
+
+
+        /* =====================================================
+           MAIN BOOT SCREEN
+        ===================================================== */
+
+        .boot-screen {
+
+            position: fixed;
+
+            inset: 0;
+
+            width: 100vw;
+            height: 100vh;
+
+            overflow: hidden;
+
+            background:
+                radial-gradient(
+                    circle at 50% 50%,
+                    rgba(255,255,255,.38),
+                    transparent 50%
+                ),
+                linear-gradient(
+                    120deg,
+                    #e8d0ad,
+                    #f5e8d2,
+                    #e6cba8
+                );
+
+        }
+
+
+        /* =====================================================
+           PAPER TEXTURE
+        ===================================================== */
+
+        .paper-texture {
+
+            position: absolute;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            opacity: .22;
+
+            background-image:
+
+                radial-gradient(
+                    rgba(80,45,20,.18) 1px,
+                    transparent 1px
+                );
+
+            background-size: 7px 7px;
+
+            mix-blend-mode: multiply;
+
+        }
+
+
+        /* =====================================================
+           TOP TEXT
+        ===================================================== */
+
+        .heritage-message {
+
+            position: absolute;
+
+            top: 7%;
+
+            left: 7%;
+
+            font-size: 13px;
+
+            letter-spacing: 3px;
+
+            line-height: 1.8;
+
+            font-style: italic;
+
+            color: rgba(87,20,29,.65);
+
+            animation:
+
+                softAppear 2s ease forwards,
+
+                gentleFloat 6s ease-in-out infinite 2s;
+
+        }
+
+
+        .heritage-message span {
+
+            display: block;
+
+        }
+
+
+        .top-right {
+
+            position: absolute;
+
+            top: 7%;
+
+            right: 7%;
+
+            text-align: right;
+
+            font-size: 11px;
+
+            letter-spacing: 5px;
+
+            line-height: 2;
+
+            color: rgba(87,20,29,.65);
+
+            animation: softAppear 2s ease forwards;
+
+        }
+
+
+        .tiny-line {
+
+            width: 30px;
+
+            height: 1px;
+
+            background: var(--gold);
+
+            margin-top: 10px;
+
+            margin-left: auto;
+
+        }
+
+
+        /* =====================================================
+           LEFT CULTURAL SCENE
+        ===================================================== */
+
+        .culture-left {
+
+            position: absolute;
+
+            left: 0;
+
+            bottom: 0;
+
+            width: 32%;
+
+            height: 48%;
+
+            opacity: .52;
+
+        }
+
+
+        .temple {
+
+            position: absolute;
+
+            bottom: 0;
+
+            left: 6%;
+
+            width: 90px;
+
+            height: 180px;
+
+            background:
+                linear-gradient(
+                    to right,
+                    transparent 0 8%,
+                    #704b35 8% 92%,
+                    transparent 92%
+                );
+
+            clip-path: polygon(
+                30% 0,
+                70% 0,
+                100% 20%,
+                88% 20%,
+                88% 100%,
+                12% 100%,
+                12% 20%,
+                0 20%
+            );
+
+            animation: templeBreath 5s ease-in-out infinite;
+
+        }
+
+
+        .temple::before {
+
+            content: "";
+
+            position: absolute;
+
+            top: 8%;
+
+            left: 20%;
+
+            width: 60%;
+
+            height: 8px;
+
+            background: var(--gold);
+
+        }
+
+
+        .temple::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 38%;
+
+            bottom: 0;
+
+            width: 24%;
+
+            height: 45%;
+
+            border-radius: 50% 50% 0 0;
+
+            background: #f0d9b7;
+
+        }
+
+
+        .palm {
+
+            position: absolute;
+
+            bottom: 0;
+
+            width: 8px;
+
+            background: #765039;
+
+            transform-origin: bottom;
+
+        }
+
+
+        .palm.one {
+
+            left: 38%;
+
+            height: 130px;
+
+            animation: palmMove 5s ease-in-out infinite;
+
+        }
+
+
+        .palm.two {
+
+            left: 51%;
+
+            height: 100px;
+
+            animation: palmMove 6s ease-in-out infinite reverse;
+
+        }
+
+
+        .palm::before,
+        .palm::after {
+
+            content: "";
+
+            position: absolute;
+
+            left: 50%;
+
+            width: 70px;
+
+            height: 35px;
+
+            border-top: 5px solid #765039;
+
+            border-radius: 50%;
+
+            transform-origin: left;
+
+        }
+
+
+        .palm::before {
+
+            top: 0;
+
+            transform: rotate(-25deg);
+
+        }
+
+
+        .palm::after {
+
+            top: 15px;
+
+            transform: rotate(25deg);
+
+        }
+
+
+        /* =====================================================
+           BIRDS
+        ===================================================== */
+
+        .birds {
+
+            position: absolute;
+
+            left: 18%;
+
+            top: 30%;
+
+            font-size: 22px;
+
+            letter-spacing: 15px;
+
+            opacity: .7;
+
+            animation: birdsFloat 7s ease-in-out infinite;
+
+        }
+
+
+        /* =====================================================
+           RIGHT MANDALA
+        ===================================================== */
+
+        .mandala {
+
+            position: absolute;
+
+            right: -100px;
+
+            bottom: -100px;
+
+            width: 430px;
+
+            height: 430px;
+
+            border: 2px solid rgba(87,20,29,.28);
+
+            border-radius: 50%;
+
+            opacity: .6;
+
+            animation: mandalaRotate 45s linear infinite;
+
+        }
+
+
+        .mandala::before {
+
+            content: "";
+
+            position: absolute;
+
+            inset: 35px;
+
+            border: 2px dashed rgba(197,138,36,.65);
+
+            border-radius: 50%;
+
+        }
+
+
+        .mandala::after {
+
+            content: "✦  ❈  ✦  ❈  ✦  ❈  ✦";
+
+            position: absolute;
+
+            inset: 0;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 52px;
+
+            letter-spacing: 18px;
+
+            color: rgba(197,138,36,.65);
+
+            transform: rotate(-20deg);
+
+        }
+
+
+        /* =====================================================
+           PETALS
+        ===================================================== */
+
+        .petal {
+
+            position: absolute;
+
+            width: 10px;
+
+            height: 18px;
+
+            border-radius: 80% 20% 80% 20%;
+
+            background: #9d3540;
+
+            opacity: .65;
+
+            animation: petalFall linear infinite;
+
+        }
+
+
+        .petal:nth-child(1) {
+
+            left: 12%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+
+        }
+
+
+        .petal:nth-child(2) {
+
+            left: 31%;
+            animation-duration: 12s;
+            animation-delay: 3s;
+
+        }
+
+
+        .petal:nth-child(3) {
+
+            left: 57%;
+            animation-duration: 10s;
+            animation-delay: 0s;
+
+        }
+
+
+        .petal:nth-child(4) {
+
+            left: 78%;
+            animation-duration: 13s;
+            animation-delay: 4s;
+
+        }
+
+
+        .petal:nth-child(5) {
+
+            left: 90%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+
+        }
+
+
+        /* =====================================================
+           DIYA
+        ===================================================== */
+
+        .diya {
+
+            position: absolute;
+
+            right: 9%;
+
+            bottom: 9%;
+
+            width: 70px;
+
+            height: 28px;
+
+            background:
+                linear-gradient(
+                    to bottom,
+                    #9a6324,
+                    #6f431d
+                );
+
+            border-radius:
+                0 0 50% 50%;
+
+            animation: diyaGlow 3s ease-in-out infinite;
+
+        }
+
+
+        .flame {
+
+            position: absolute;
+
+            left: 50%;
+
+            bottom: 20px;
+
+            width: 18px;
+
+            height: 35px;
+
+            transform:
+                translateX(-50%)
+                rotate(45deg);
+
+            border-radius:
+                50% 0 50% 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #fff2a6,
+                    #e09a2b
+                );
+
+            animation: flameMove .8s ease-in-out infinite alternate;
+
+        }
+
+
+        /* =====================================================
+           TEAR PAPER
+        ===================================================== */
+
+        .paper-layer {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+
+                radial-gradient(
+                    circle at 40% 50%,
+                    rgba(255,255,255,.5),
+                    transparent 45%
+                ),
+
+                #f4e5cf;
+
+            z-index: 20;
+
+            /*
+                IMPORTANT:
+                This layer is the paper covering the page.
+            */
+
+            clip-path: polygon(
+                0 0,
+                100% 0,
+                100% 100%,
+                0 100%
+            );
+
+          animation: paperTear 6s cubic-bezier(.65,.05,.25,1) forwards;
+
+        }
+
+
+        /* =====================================================
+           TORN EDGE
+        ===================================================== */
+
+        .tear-edge {
+
+            position: absolute;
+
+            top: 0;
+
+            left: 0;
+
+            width: 22px;
+
+            height: 100%;
+
+            background:
+
+                repeating-linear-gradient(
+                    to bottom,
+                    #f4e5cf 0px,
+                    #f4e5cf 12px,
+                    #dfc49f 15px,
+                    #f4e5cf 23px
+                );
+
+            filter:
+                drop-shadow(
+                    5px 0 7px
+                    rgba(65,35,20,.18)
+                );
+
+            z-index: 21;
+
+            animation:
+
+                edgeMove 4.8s
+                cubic-bezier(.65,.05,.25,1)
+                forwards;
+
+        }
+
+
+        /* =====================================================
+           CENTER LOGO AREA
+        ===================================================== */
+
+        .logo-area {
+
+            position: absolute;
+
+            z-index: 10;
+
+            left: 50%;
+
+            top: 50%;
+
+            transform:
+                translate(-50%,-50%);
+
+            width: min(700px, 70vw);
+
+            text-align: center;
+
+            animation:
+
+                logoAppear 1.8s
+                ease
+                1.8s
+                forwards;
+
+            opacity: 0;
+
+        }
+
+
+        .logo-symbol {
+
+            width: 60px;
+
+            height: 60px;
+
+            margin: 0 auto 20px;
+
+            border: 2px solid var(--gold);
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            font-size: 28px;
+
+            color: var(--gold);
+
+            box-shadow:
+                0 0 0 8px
+                rgba(197,138,36,.05);
+
+            animation:
+
+                symbolPulse 3s
+                ease-in-out
+                infinite;
+
+        }
+
+
+        .logo {
+
+            font-size:
+                clamp(52px, 7vw, 100px);
+
+            letter-spacing: 8px;
+
+            font-weight: normal;
+
+            color: var(--maroon);
+
+        }
+
+
+        .logo span {
+
+            color: var(--gold);
+
+        }
+
+
+        .tagline {
+
+            margin-top: 12px;
+
+            letter-spacing: 7px;
+
+            font-size: 12px;
+
+            color: var(--teal);
+
+        }
+
+
+        .logo-divider {
+
+            display: flex;
+
+            align-items: center;
+
+            justify-content: center;
+
+            gap: 20px;
+
+            margin: 15px auto;
+
+        }
+
+
+        .logo-divider span {
+
+            width: 80px;
+
+            height: 1px;
+
+            background: var(--gold);
+
+        }
+
+
+        .logo-divider b {
+
+            color: var(--gold);
+
+            font-size: 15px;
+
+        }
+
+
+        /* =====================================================
+           SIDE PHRASE
+        ===================================================== */
+
+        .side-phrase {
+
+            position: absolute;
+
+            z-index: 5;
+
+            right: 17%;
+
+            top: 43%;
+
+            width: 140px;
+
+            border-left: 1px solid var(--gold);
+
+            padding-left: 25px;
+
+            font-size: 11px;
+
+            line-height: 2;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            color: rgba(87,20,29,.7);
+
+            animation: softAppear 2s ease forwards;
+
+        }
+
+
+        /* =====================================================
+           LOADING AREA
+        ===================================================== */
+
+        .loading {
+
+            position: absolute;
+
+            z-index: 30;
+
+            left: 50%;
+
+            bottom: 8%;
+
+            transform:
+                translateX(-50%);
+
+            width: min(420px, 55vw);
+
+        }
+
+
+        .loading-title {
+
+            display: flex;
+
+            justify-content: space-between;
+
+            align-items: center;
+
+            margin-bottom: 10px;
+
+            font-size: 11px;
+
+            letter-spacing: 4px;
+
+            color: var(--maroon);
+
+        }
+
+
+        .percentage {
+
+            color: var(--gold);
+
+        }
+
+
+        .progress-track {
+
+            width: 100%;
+
+            height: 5px;
+
+            border: 1px solid
+                rgba(87,20,29,.55);
+
+            border-radius: 10px;
+
+            padding: 1px;
+
+        }
+
+
+        .progress-bar {
+
+            width: 0%;
+
+            height: 100%;
+
+            border-radius: 10px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    var(--gold),
+                    #e0a735
+                );
+
+            transition:
+                width .25s ease;
+
+        }
+
+
+        .loading-status {
+
+            margin-top: 14px;
+
+            min-height: 20px;
+
+            text-align: center;
+
+            font-size: 12px;
+
+            letter-spacing: 2px;
+
+            color:
+                rgba(87,20,29,.65);
+
+            animation:
+                statusFade .7s ease;
+
+        }
+
+
+        /* =====================================================
+           BOTTOM QUOTE
+        ===================================================== */
+
+        .bottom-quote {
+
+            position: absolute;
+
+            bottom: 3%;
+
+            left: 50%;
+
+            transform:
+                translateX(-50%);
+
+            font-size: 10px;
+
+            letter-spacing: 5px;
+
+            color:
+                rgba(87,20,29,.5);
+
+        }
+
+
+        /* =====================================================
+           ANIMATIONS
+        ===================================================== */
+
+       
+
+        @keyframes edgeMove {
+
+            0% {
+
+                left: 0;
+
+            }
+
+            100% {
+
+                left: 100%;
+
+                transform:
+                    translateX(-10px);
+
+            }
+
+        }
+
+
+        @keyframes logoAppear {
+
+            0% {
+
+                opacity: 0;
+
+                transform:
+                    translate(-50%,-46%);
+
+            }
+
+            100% {
+
+                opacity: 1;
+
+                transform:
+                    translate(-50%,-50%);
+
+            }
+
+        }
+
+
+        @keyframes symbolPulse {
+
+            0%,
+            100% {
+
+                transform: scale(1);
+
+            }
+
+            50% {
+
+                transform: scale(1.06);
+
+            }
+
+        }
+
+
+        @keyframes mandalaRotate {
+
+            from {
+
+                transform: rotate(0deg);
+
+            }
+
+            to {
+
+                transform: rotate(360deg);
+
+            }
+
+        }
+
+
+        @keyframes petalFall {
+
+            0% {
+
+                top: -10%;
+
+                transform:
+                    translateX(0)
+                    rotate(0deg);
+
+            }
+
+            50% {
+
+                transform:
+                    translateX(50px)
+                    rotate(180deg);
+
+            }
+
+            100% {
+
+                top: 110%;
+
+                transform:
+                    translateX(-40px)
+                    rotate(360deg);
+
+            }
+
+        }
+
+
+        @keyframes flameMove {
+
+            from {
+
+                transform:
+                    translateX(-50%)
+                    rotate(38deg)
+                    scale(.9);
+
+            }
+
+            to {
+
+                transform:
+                    translateX(-50%)
+                    rotate(52deg)
+                    scale(1.1);
+
+            }
+
+        }
+
+
+        @keyframes diyaGlow {
+
+            0%,
+            100% {
+
+                box-shadow:
+                    0 0 10px
+                    rgba(224,154,43,.2);
+
+            }
+
+            50% {
+
+                box-shadow:
+                    0 0 35px
+                    rgba(224,154,43,.55);
+
+            }
+
+        }
+
+
+        @keyframes palmMove {
+
+            0%,
+            100% {
+
+                transform: rotate(-2deg);
+
+            }
+
+            50% {
+
+                transform: rotate(3deg);
+
+            }
+
+        }
+
+
+        @keyframes templeBreath {
+
+            0%,
+            100% {
+
+                transform: translateY(0);
+
+            }
+
+            50% {
+
+                transform: translateY(-3px);
+
+            }
+
+        }
+
+
+        @keyframes birdsFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translate(0,0);
+
+            }
+
+            50% {
+
+                transform:
+                    translate(25px,-15px);
+
+            }
+
+        }
+
+
+        @keyframes softAppear {
+
+            from {
+
+                opacity: 0;
+
+            }
+
+            to {
+
+                opacity: 1;
+
+            }
+
+        }
+
+
+        @keyframes gentleFloat {
+
+            0%,
+            100% {
+
+                transform:
+                    translateY(0);
+
+            }
+
+            50% {
+
+                transform:
+                    translateY(-5px);
+
+            }
+
+        }
+
+
+        @keyframes statusFade {
+
+            from {
+
+                opacity: 0;
+
+                transform:
+                    translateY(4px);
+
+            }
+
+            to {
+
+                opacity: 1;
+
+                transform:
+                    translateY(0);
+
+            }
+
+        }
+
+
+        /* =====================================================
+           MOBILE
+        ===================================================== */
+
+        @media(max-width: 700px) {
+
+            .heritage-message,
+            .top-right {
+
+                font-size: 9px;
+
+                letter-spacing: 2px;
+
+            }
+
+
+            .culture-left {
+
+                width: 45%;
+
+                opacity: .35;
+
+            }
+
+
+            .mandala {
+
+                width: 280px;
+
+                height: 280px;
+
+            }
+
+
+            .side-phrase {
+
+                display: none;
+
+            }
+
+
+            .logo {
+
+                letter-spacing: 4px;
+
+            }
+
+
+            .tagline {
+
+                letter-spacing: 3px;
+
+            }
+
+
+            .loading {
+
+                width: 70vw;
+
+            }
+
+        }
+        /* =====================================================
+   SMOOTH TRANSITION TO HOMEPAGE
+===================================================== */
+
+.boot-screen {
+    transition: opacity 1.4s ease;
+}
+
+.boot-screen.boot-fade-out {
+    opacity: 0;
+}
+    </style>
+
+</head>
+
+
+<body>
+    <!-- =====================================================
+     TEDKRAFT CULTURAL BOOT VISUALS
+===================================================== -->
+
+<div class="boot-culture">
+
+    <!-- LEFT: INDIAN DANCE PAINTING -->
+    <div class="culture-dancer dancer-left">
+        <div class="dancer-head"></div>
+        <div class="dancer-body"></div>
+        <div class="dancer-arm arm-one"></div>
+        <div class="dancer-arm arm-two"></div>
+        <div class="dancer-leg leg-one"></div>
+        <div class="dancer-leg leg-two"></div>
+
+        <span class="dancer-dot dot-one">✦</span>
+        <span class="dancer-dot dot-two">•</span>
+        <span class="dancer-dot dot-three">✦</span>
+    </div>
+
+
+    <!-- RIGHT: RANGOLI -->
+    <div class="boot-rangoli">
+
+        <div class="rangoli-ring ring-one"></div>
+        <div class="rangoli-ring ring-two"></div>
+
+        <div class="rangoli-petals">
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+            <span>✦</span>
+        </div>
+
+        <div class="rangoli-center">✦</div>
+
+    </div>
+
+
+    <!-- BOTTOM LEFT: TEMPLE SILHOUETTE -->
+    <div class="culture-temple">
+
+        <div class="temple-roof"></div>
+        <div class="temple-body"></div>
+
+        <div class="temple-door"></div>
+
+        <div class="temple-spire">
+            ▲
+        </div>
+
+    </div>
+
+
+    <!-- SMALL FLOATING CULTURAL MOTIFS -->
+
+    <div class="culture-motif motif-one">✦</div>
+    <div class="culture-motif motif-two">◆</div>
+    <div class="culture-motif motif-three">✧</div>
+
+</div>
+<!-- =========================================
+     TEDKRAFT CULTURAL LIVING BACKGROUND
+========================================= -->
+
+<!-- =========================================
+     TEDKRAFT — LIVING INDIAN HERITAGE
+========================================= -->
+
+
+
+<div class="boot-screen">
+<div class="culture-layer">
+
+    <!-- FLOATING GOLD DUST -->
+    <div class="heritage-dust dust-1">✦</div>
+    <div class="heritage-dust dust-2">✧</div>
+    <div class="heritage-dust dust-3">•</div>
+    <div class="heritage-dust dust-4">✦</div>
+    <div class="heritage-dust dust-5">•</div>
+
+
+    <!-- =====================================
+         LEFT CULTURAL PAINTING
+    ====================================== -->
+
+    <div class="folk-art left-art">
+
+        <div class="folk-sun"></div>
+
+        <div class="folk-hill hill-1"></div>
+        <div class="folk-hill hill-2"></div>
+
+        <div class="folk-temple">
+
+            <div class="temple-top"></div>
+
+            <div class="temple-roof roof-1"></div>
+            <div class="temple-roof roof-2"></div>
+            <div class="temple-roof roof-3"></div>
+
+            <div class="temple-main">
+                <div class="temple-door"></div>
+                <div class="temple-window window-1"></div>
+                <div class="temple-window window-2"></div>
+            </div>
+
+        </div>
+
+
+        <!-- PALM TREES -->
+
+        <div class="folk-palm palm-1">
+            <div class="palm-trunk"></div>
+
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+            <div class="leaf leaf-4"></div>
+            <div class="leaf leaf-5"></div>
+        </div>
+
+
+        <div class="folk-palm palm-2">
+            <div class="palm-trunk"></div>
+
+            <div class="leaf leaf-1"></div>
+            <div class="leaf leaf-2"></div>
+            <div class="leaf leaf-3"></div>
+            <div class="leaf leaf-4"></div>
+            <div class="leaf leaf-5"></div>
+        </div>
+
+    </div>
+
+
+    <!-- =====================================
+         INDIAN CLASSICAL DANCER
+    ====================================== -->
+
+    <div class="heritage-dancer dancer-left">
+
+        <div class="dancer-head">
+            <div class="hair"></div>
+        </div>
+
+        <div class="dancer-neck"></div>
+
+        <div class="dancer-torso"></div>
+
+        <div class="dancer-arm dancer-arm-left"></div>
+        <div class="dancer-arm dancer-arm-right"></div>
+
+        <div class="dancer-skirt">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dancer-leg dancer-leg-left"></div>
+        <div class="dancer-leg dancer-leg-right"></div>
+
+        <div class="dancer-foot foot-left"></div>
+        <div class="dancer-foot foot-right"></div>
+
+    </div>
+
+
+    <!-- =====================================
+         RIGHT RANGOLI
+    ====================================== -->
+
+    <div class="living-rangoli">
+
+        <div class="rangoli-circle circle-outer"></div>
+        <div class="rangoli-circle circle-middle"></div>
+        <div class="rangoli-circle circle-inner"></div>
+
+        <div class="rangoli-petal rp-1"></div>
+        <div class="rangoli-petal rp-2"></div>
+        <div class="rangoli-petal rp-3"></div>
+        <div class="rangoli-petal rp-4"></div>
+        <div class="rangoli-petal rp-5"></div>
+        <div class="rangoli-petal rp-6"></div>
+        <div class="rangoli-petal rp-7"></div>
+        <div class="rangoli-petal rp-8"></div>
+
+        <div class="rangoli-dots dot-1"></div>
+        <div class="rangoli-dots dot-2"></div>
+        <div class="rangoli-dots dot-3"></div>
+        <div class="rangoli-dots dot-4"></div>
+
+        <div class="rangoli-center">✦</div>
+
+    </div>
+
+
+    <!-- =====================================
+         DIYA
+    ====================================== -->
+
+    <div class="living-diya">
+
+        <div class="diya-flame">
+            <span></span>
+        </div>
+
+        <div class="diya-glow"></div>
+
+        <div class="diya-bowl"></div>
+
+    </div>
+
+
+    <!-- =====================================
+         SECOND SMALL DANCER
+    ====================================== -->
+
+    <div class="heritage-dancer dancer-right">
+
+        <div class="dancer-head">
+            <div class="hair"></div>
+        </div>
+
+        <div class="dancer-neck"></div>
+
+        <div class="dancer-torso"></div>
+
+        <div class="dancer-arm dancer-arm-left"></div>
+        <div class="dancer-arm dancer-arm-right"></div>
+
+        <div class="dancer-skirt">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+
+        <div class="dancer-leg dancer-leg-left"></div>
+        <div class="dancer-leg dancer-leg-right"></div>
+
+        <div class="dancer-foot foot-left"></div>
+        <div class="dancer-foot foot-right"></div>
+
+    </div>
+
+</div>
+
+    <!-- =====================================================
+         PAPER TEXTURE
+    ====================================================== -->
+
+    <div class="paper-texture"></div>
+
+
+    <!-- =====================================================
+         CULTURAL BACKGROUND
+    ====================================================== -->
+
+    <div class="culture-left">
+
+        <div class="temple"></div>
+
+        <div class="palm one"></div>
+
+        <div class="palm two"></div>
+
+        <div class="birds">
+            ︵ ︵ ︵
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         MANDALA
+    ====================================================== -->
+
+    <div class="mandala"></div>
+
+
+    <!-- =====================================================
+         PETALS
+    ====================================================== -->
+
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+    <div class="petal"></div>
+
+
+    <!-- =====================================================
+         DIYA
+    ====================================================== -->
+
+    <div class="diya">
+
+        <div class="flame"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         HERITAGE TEXT
+    ====================================================== -->
+
+    <div class="heritage-message">
+
+        <span>
+            "Rooted in heritage,
+        </span>
+
+        <span>
+            shaping a brighter tomorrow."
+        </span>
+
+    </div>
+
+
+    <div class="top-right">
+
+        INDIAN CRAFT
+
+        <br>
+
+        GLOBAL IMPACT
+
+        <div class="tiny-line"></div>
+
+    </div>
+
+
+    <!-- =====================================================
+         CENTER TEDKRAFT LOGO
+    ====================================================== -->
+
+    <div class="logo-area">
+
+
+        <div class="logo-symbol">
+            T
+        </div>
+
+
+        <div class="logo-divider">
+
+            <span></span>
+
+            <b>✦</b>
+
+            <span></span>
+
+        </div>
+
+
+        <div class="logo">
+
+            TED<span>K</span>RAFT
+
+        </div>
+
+
+        <div class="tagline">
+
+            CRAFT
+            &nbsp; ◆ &nbsp;
+            CULTURE
+            &nbsp; ◆ &nbsp;
+            OPPORTUNITY
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         SIDE MESSAGE
+    ====================================================== -->
+
+    <div class="side-phrase">
+
+        EMPOWERING
+
+        <br>
+
+        ARTISANS
+
+        <br>
+
+        THROUGH
+
+        <br>
+
+        TECHNOLOGY
+
+    </div>
+
+
+    <!-- =====================================================
+         LOADING
+    ====================================================== -->
+
+    <div class="loading">
+
+
+        <div class="loading-title">
+
+            <span id="loadingTitle">
+                INITIALIZING TEDKRAFT...
+            </span>
+
+            <span
+                class="percentage"
+                id="percentage"
+            >
+                0%
+            </span>
+
+        </div>
+
+
+        <div class="progress-track">
+
+            <div
+                class="progress-bar"
+                id="progressBar"
+            ></div>
+
+        </div>
+
+
+        <div
+            class="loading-status"
+            id="loadingStatus"
+        >
+            Awakening the craft intelligence...
+
+        </div>
+
+
+    </div>
+
+
+    <!-- =====================================================
+         BOTTOM QUOTE
+    ====================================================== -->
+
+    <div class="bottom-quote">
+
+        TRADITION MEETS TOMORROW
+
+    </div>
+
+
+    <!-- =====================================================
+         PAPER COVER
+         THIS CREATES THE LEFT → RIGHT TEAR
+    ====================================================== -->
+
+    <div class="paper-layer"></div>
+
+    <div class="tear-edge"></div>
+
+
+</div>
+
+
+<script>
+
+    /* =====================================================
+       TEDKRAFT BOOT ENGINE
+    ===================================================== */
+
+    const progressBar =
+        document.getElementById("progressBar");
+
+    const percentage =
+        document.getElementById("percentage");
+
+    const loadingStatus =
+        document.getElementById("loadingStatus");
+
+
+    const messages = [
+
+        "Awakening the craft intelligence...",
+
+        "Connecting artisan network...",
+
+        "Preserving stories and traditions...",
+
+        "Preparing the marketplace...",
+
+        "Bringing handmade creations to life...",
+
+        "TEDKRAFT is ready."
+
+    ];
+
+
+    let progress = 0;
+
+    let messageIndex = 0;
+
+
+    /* =====================================================
+       PROGRESS
+    ===================================================== */
+
+    const bootInterval = setInterval(() => {
+
+        progress +=
+            Math.floor(Math.random() * 4) + 1;
+
+
+        if (progress >= 100) {
+
+            progress = 100;
+
+            clearInterval(bootInterval);
+
+        }
+
+
+        progressBar.style.width =
+            progress + "%";
+
+
+        percentage.textContent =
+            progress + "%";
+
+
+        /* -----------------------------------------------
+           CHANGE STATUS MESSAGE
+        ------------------------------------------------ */
+
+        const newIndex =
+            Math.min(
+                Math.floor(progress / 17),
+                messages.length - 1
+            );
+
+
+        if (newIndex !== messageIndex) {
+
+            messageIndex = newIndex;
+
+
+            loadingStatus.style.animation =
+                "none";
+
+
+            void loadingStatus.offsetWidth;
+
+
+            loadingStatus.textContent =
+                messages[messageIndex];
+
+
+            loadingStatus.style.animation =
+                "statusFade .7s ease";
+
+        }
+
+    }, 120);
+
+
+    /* =====================================================
+       FINISH BOOT
+    ===================================================== */
+
+  setTimeout(() => {
+
+    loadingStatus.textContent =
+        "TEDKRAFT is ready.";
+
+    loadingStatus.style.animation =
+        "statusFade .8s ease";
+
+    /*
+        Tell index.html that it is entering
+        from the TEDKRAFT boot experience.
+    */
+    sessionStorage.setItem(
+        "tedkraftTransition",
+        "true"
+    );
+
+    /*
+        Give the final boot state time to breathe.
+    */
+    setTimeout(() => {
+
+        document
+            .querySelector(".boot-screen")
+            .classList.add("boot-fade-out");
+
+    }, 700);
+
+    /*
+        Wait for the fade before changing page.
+    */
+    setTimeout(() => {
+
+        window.location.replace(
+            "index.html"
+        );
+
+    }, 2300);
+
+}, 6200);
+
+</script>
+
+</body>
+
+</html>
