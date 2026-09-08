@@ -1127,35 +1127,79 @@
 
 
         <div
-            class="studio-progress"
-            aria-label="Product creation steps"
-        >
+    class="studio-progress"
+    aria-label="Product creation steps"
+>
 
-            <div class="studio-step active">
+    <div class="studio-step active" data-step="1">
 
-                <span>01</span>
+        <span>01</span>
 
-                <b>SPEAK</b>
+        <b>PRODUCT INPUT</b>
 
-            </div>
+    </div>
 
-            <div class="studio-step">
+    <div class="studio-step" data-step="2">
 
-                <span>02</span>
+        <span>02</span>
 
-                <b>PHOTO</b>
+        <b>AI INTERVIEW</b>
 
-            </div>
+    </div>
 
-            <div class="studio-step">
+    <div class="studio-step" data-step="3">
 
-                <span>03</span>
+        <span>03</span>
 
-                <b>CATALOGUE</b>
+        <b>CATALOGUE</b>
 
-            </div>
+    </div>
 
-        </div>
+    <div class="studio-step" data-step="4">
+
+        <span>04</span>
+
+        <b>FAIR PRICE</b>
+
+    </div>
+
+</div>
+<!-- =================================================
+     STUDIO NAVIGATION
+================================================== -->
+
+<div
+    class="studio-navigation"
+    id="studioNavigation"
+>
+
+    <button
+        type="button"
+        class="outline-btn"
+        id="studioBackBtn"
+        style="display: none;"
+    >
+        ← BACK
+    </button>
+
+
+    <div
+        class="studio-step-status"
+        id="studioStepStatus"
+    >
+        STEP 1 OF 4
+    </div>
+
+
+    <button
+        type="button"
+        class="primary-btn"
+        id="studioNextBtn"
+    >
+        CONTINUE →
+    </button>
+
+</div>
 
 
 
@@ -1164,7 +1208,7 @@
 
             <!-- VOICE -->
 
-            <div class="demo-card">
+            <div class="demo-card" id="productVoicePanel"></div>
 
                 <label>
                     STEP 01 — VOICE
@@ -1235,9 +1279,10 @@
 
 
                 <label
-                    class="upload"
-                    for="imageInput"
-                >
+    class="upload"
+    id="productPhotoPanel"
+    for="imageInput"
+>
 
                     <span class="upload-symbol">
                         PHOTO
@@ -1278,7 +1323,7 @@
 
                 <!-- AI RESULT -->
 
-                <div class="ai-result">
+                <div class="ai-result" id="aiWorkspace">
 
 
                     <div class="result-head">
@@ -1296,78 +1341,79 @@
 
 
 
-                    <div class="catalogue">
+                     <div
+    class="catalogue"
+    id="cataloguePanel"
+>
 
-                        <div class="catalogue-img">
+    <div class="catalogue-img">
 
-                            <img
-                                id="catalogueImage"
-                                src="bamboo-basket.png"
-                                alt="Bamboo basket"
-                            >
+        <img
+            id="catalogueImage"
+            src="bamboo-basket.png"
+            alt="Bamboo basket"
+        >
 
-                        </div>
-
-
-                        <div>
-
-                            <small id="catalogueCategory">
-                                PRODUCT CATEGORY
-                            </small>
+    </div>
 
 
-                            <h3 id="catalogueTitle">
-                                Handcrafted Product
-                            </h3>
+    <div>
+
+        <small id="catalogueCategory">
+            PRODUCT CATEGORY
+        </small>
 
 
-                            <p id="catalogueDescription">
-                                Upload a product photo or enter product
-                                details, then click GENERATE CATALOGUE.
-                            </p>
+        <h3 id="catalogueTitle">
+            Handcrafted Product
+        </h3>
 
 
-                            <div class="details">
-
-                                <span>
-
-                                    MATERIAL
-
-                                    <b id="catalogueMaterial">
-                                        Not specified
-                                    </b>
-
-                                </span>
+        <p id="catalogueDescription">
+            Upload a product photo or enter product
+            details, then click GENERATE CATALOGUE.
+        </p>
 
 
-                                <span>
+        <div class="details">
 
-                                    CRAFT
+            <span>
 
-                                    <b id="catalogueCraft">
-                                        Not specified
-                                    </b>
+                MATERIAL
 
-                                </span>
+                <b id="catalogueMaterial">
+                    Not specified
+                </b>
 
-
-                                <span>
-
-                                    TIME
-
-                                    <b id="catalogueTime">
-                                        Not specified
-                                    </b>
-
-                                </span>
-
-                            </div>
-
-                        </div>
-
-                    </div>
+            </span>
 
 
+            <span>
+
+                CRAFT
+
+                <b id="catalogueCraft">
+                    Not specified
+                </b>
+
+            </span>
+
+
+            <span>
+
+                TIME
+
+                <b id="catalogueTime">
+                    Not specified
+                </b>
+
+            </span>
+
+        </div>
+
+    </div>
+
+</div>
 
                     <div class="modal-buttons">
 
@@ -1389,7 +1435,129 @@
                     </div>
 
 
+<!-- =================================================
+     AI ARTISAN INTERVIEWER
+================================================== -->
 
+<div
+    id="aiInterview"
+    class="ai-result interview-section"
+    style="display: none;"
+>
+
+    <div class="result-head">
+
+        <span>
+            ✦ AI ARTISAN INTERVIEW
+        </span>
+
+        <b id="interviewStatus">
+            READY
+        </b>
+
+    </div>
+
+
+    <div class="interview-content">
+
+        <div class="interview-question-box">
+
+            <small>
+                TEDKRAFT AI ASKS
+            </small>
+
+            <p id="interviewQuestion">
+                Your AI follow-up question will appear here.
+            </p>
+
+        </div>
+
+
+        <div
+            class="voice-transcript-box"
+            id="interviewAnswerBox"
+        >
+
+            <div class="voice-transcript-head">
+
+                <span>
+                    ARTISAN ANSWER
+                </span>
+
+                <small id="interviewAnswerStatus">
+                    WAITING
+                </small>
+
+            </div>
+
+
+            <p
+                id="interviewAnswer"
+                contenteditable="true"
+                style="outline: none; min-height: 45px; cursor: text;"
+                title="Speak your answer or type it here"
+            >
+                Tap the microphone or type your answer...
+            </p>
+
+        </div>
+
+
+        <div class="interview-actions">
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="startInterviewBtn"
+                onclick="startArtisanInterview()"
+            >
+                START AI INTERVIEW →
+            </button>
+
+
+            <button
+                type="button"
+                class="outline-btn"
+                id="answerInterviewBtn"
+                onclick="answerInterviewByVoice()"
+                style="display: none;"
+            >
+                🎙️ ANSWER BY VOICE
+            </button>
+
+
+            <button
+                type="button"
+                class="primary-btn"
+                id="nextInterviewBtn"
+                onclick="submitInterviewAnswer()"
+                style="display: none;"
+            >
+                SUBMIT ANSWER →
+            </button>
+
+        </div>
+
+
+        <div
+            id="interviewProgress"
+            class="interview-progress"
+        >
+            AI will ask up to 3 relevant questions.
+        </div>
+
+
+        <div
+            id="interviewComplete"
+            class="interview-complete"
+            style="display: none;"
+        >
+            ✓ PRODUCT INFORMATION COMPLETE
+        </div>
+
+    </div>
+
+</div>
                     
                 <!-- =================================================
      FAIR PRICE ADVISOR

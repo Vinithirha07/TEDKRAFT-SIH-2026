@@ -4411,3 +4411,1280 @@ function calculateFairPrice(
             negotiationFloor
     };
 }
+/* =========================================================
+   TEDKRAFT AI ARTISAN INTERVIEWER — FRONTEND
+========================================================= */
+
+const tedkraftInterviewState = {
+    productProfile: {},
+    conversation: [],
+    currentQuestion: "",
+    currentField: "",
+    questionCount: 0,
+    maxQuestions: 3,
+    recognition: null,
+    active: false
+};
+
+
+/* =========================================================
+   GET CURRENT LANGUAGE
+========================================================= */
+
+function getInterviewLanguage() {
+
+    const activeButton =
+        document.querySelector(
+            ".language-buttons button.active"
+        );
+
+    const language =
+        activeButton?.dataset?.language || "en";
+
+    const locales = {
+        en: "en-IN",
+        ta: "ta-IN",
+        hi: "hi-IN",
+        kn: "kn-IN",
+        te: "te-IN"
+    };
+
+    return locales[language] || "en-IN";
+}
+
+
+/* =========================================================
+   GET CURRENT PRODUCT INFORMATION
+========================================================= */
+
+function getCurrentProductProfile() {
+
+    const title =
+        document.getElementById(
+            "catalogueTitle"
+        )?.textContent.trim() || null;
+
+    const material =
+        document.getElementById(
+            "catalogueMaterial"
+        )?.textContent.trim() || null;
+
+    const craft =
+        document.getElementById(
+            "catalogueCraft"
+        )?.textContent.trim() || null;
+
+    const timeText =
+        document.getElementById(
+            "catalogueTime"
+        )?.textContent.trim() || "";
+
+    const workDaysMatch =
+        timeText.match(/\d+(?:\.\d+)?/);
+
+    const workDays =
+        workDaysMatch
+            ? Number(workDaysMatch[0])
+            : null;
+
+    const artisanDescription =
+        document.getElementById(
+            "voiceOutput"
+        )?.textContent.trim() || "";
+
+
+    return {
+
+        product_name:
+            title || null,
+
+        material:
+            material || null,
+
+        craft:
+            craft || null,
+
+        workDays:
+            workDays,
+
+        size:
+            null,
+
+        colour:
+            null,
+
+        customization:
+            null,
+
+        monthlyCapacity:
+            null,
+
+        differentiator:
+            null,
+
+        artisanDescription:
+            artisanDescription
+
+    };
+}
+
+
+/* =========================================================
+   SHOW INTERVIEW SECTION AFTER CATALOGUE IS READY
+========================================================= */
+
+function setupInterviewVisibility() {
+
+    const status =
+        document.getElementById("status");
+
+    const interview =
+        document.getElementById("aiInterview");
+
+    if (!status || !interview) {
+        return;
+    }
+
+    function updateVisibility() {
+
+        const currentStatus =
+            status.textContent.trim().toUpperCase();
+
+        if (currentStatus === "READY") {
+
+            interview.style.display = "block";
+
+        } else {
+
+            interview.style.display = "none";
+
+        }
+    }
+
+    // Set the correct initial state
+    updateVisibility();
+
+    const observer =
+        new MutationObserver(updateVisibility);
+
+    observer.observe(
+        status,
+        {
+            childList: true,
+            characterData: true,
+            subtree: true
+        }
+    );
+}
+
+/* =========================================================
+   START AI INTERVIEW
+========================================================= */
+
+async function startArtisanInterview() {
+
+    const interview =
+        document.getElementById(
+            "aiInterview"
+        );
+
+    const status =
+        document.getElementById(
+            "interviewStatus"
+        );
+
+    const startButton =
+        document.getElementById(
+            "startInterviewBtn"
+        );
+
+    const answerButton =
+        document.getElementById(
+            "answerInterviewBtn"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "nextInterviewBtn"
+        );
+
+
+    if (!interview) {
+        return;
+    }
+
+
+    tedkraftInterviewState.productProfile =
+        getCurrentProductProfile();
+
+    tedkraftInterviewState.conversation = [];
+
+    tedkraftInterviewState.currentQuestion = "";
+
+    tedkraftInterviewState.currentField = "";
+
+    tedkraftInterviewState.questionCount = 0;
+
+    tedkraftInterviewState.active = true;
+
+
+    interview.style.display =
+        "block";
+
+
+    status.textContent =
+        "THINKING...";
+
+
+    startButton.style.display =
+        "none";
+
+    answerButton.style.display =
+        "none";
+
+    nextButton.style.display =
+        "none";
+
+
+    await requestNextInterviewQuestion("");
+}
+
+
+/* =========================================================
+   REQUEST NEXT QUESTION
+========================================================= */
+
+async function requestNextInterviewQuestion(
+    answer
+) {
+
+    const questionElement =
+        document.getElementById(
+            "interviewQuestion"
+        );
+
+    const questionStatus =
+        document.getElementById(
+            "interviewStatus"
+        );
+
+    const answerStatus =
+        document.getElementById(
+            "interviewAnswerStatus"
+        );
+
+    const answerElement =
+        document.getElementById(
+            "interviewAnswer"
+        );
+
+    const answerButton =
+        document.getElementById(
+            "answerInterviewBtn"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "nextInterviewBtn"
+        );
+
+    const progress =
+        document.getElementById(
+            "interviewProgress"
+        );
+
+    try {
+
+        questionStatus.textContent =
+            "THINKING...";
+
+
+        answerStatus.textContent =
+            "WAITING";
+
+
+        const response =
+            await fetch(
+                "/api/interview",
+                {
+                    method: "POST",
+
+                    headers: {
+                        "Content-Type":
+                            "application/json"
+                    },
+
+                    body: JSON.stringify({
+
+                        productProfile:
+                            tedkraftInterviewState.productProfile,
+
+                        conversation:
+                            tedkraftInterviewState.conversation,
+
+                        answer:
+                            answer
+
+                    })
+                }
+            );
+
+
+        const data =
+            await response.json();
+
+
+        if (!response.ok) {
+
+            throw new Error(
+                data.error ||
+                "Interview request failed."
+            );
+        }
+
+
+        /* =============================================
+           UPDATE PRODUCT PROFILE
+        ============================================= */
+
+        if (
+            data.updatedProduct &&
+            typeof data.updatedProduct === "object"
+        ) {
+
+            tedkraftInterviewState.productProfile =
+                {
+                    ...tedkraftInterviewState.productProfile,
+                    ...data.updatedProduct
+                };
+        }
+
+
+        /* =============================================
+           INTERVIEW COMPLETE
+        ============================================= */
+
+        if (data.complete) {
+
+            tedkraftInterviewState.active =
+                false;
+
+
+            questionStatus.textContent =
+                "COMPLETE";
+
+
+            questionElement.textContent =
+                "Your product information is complete.";
+
+
+            answerStatus.textContent =
+                "DONE";
+
+
+            answerButton.style.display =
+                "none";
+
+
+            nextButton.style.display =
+                "none";
+
+
+            progress.textContent =
+                "✓ Product information complete. You can now use the catalogue and Fair Price Advisor.";
+
+
+            const complete =
+                document.getElementById(
+                    "interviewComplete"
+                );
+
+            if (complete) {
+
+                complete.style.display =
+                    "block";
+            }
+
+
+            return;
+        }
+
+
+        /* =============================================
+           NEW QUESTION
+        ============================================= */
+
+        tedkraftInterviewState.currentQuestion =
+            data.question || "";
+
+        tedkraftInterviewState.currentField =
+            data.field || "";
+
+        tedkraftInterviewState.questionCount++;
+
+
+        questionStatus.textContent =
+            "ASKING";
+
+
+        questionElement.textContent =
+            data.question;
+
+
+        answerElement.textContent =
+            "Tap ANSWER BY VOICE or type your answer here...";
+
+
+        answerButton.style.display =
+            "inline-flex";
+
+
+        nextButton.style.display =
+            "inline-flex";
+
+
+        progress.textContent =
+            `Question ${tedkraftInterviewState.questionCount} of ${tedkraftInterviewState.maxQuestions}`;
+
+
+        /* =============================================
+           READ QUESTION ALOUD
+        ============================================= */
+
+        speakInterviewQuestion(
+            data.question
+        );
+
+
+        /* =============================================
+           MAX QUESTION SAFETY
+        ============================================= */
+
+        if (
+            tedkraftInterviewState.questionCount >=
+            tedkraftInterviewState.maxQuestions
+        ) {
+
+            progress.textContent =
+                `Question ${tedkraftInterviewState.questionCount} of ${tedkraftInterviewState.maxQuestions}`;
+        }
+
+
+    } catch (error) {
+
+        console.error(
+            "TEDKRAFT INTERVIEW ERROR:",
+            error
+        );
+
+
+        questionStatus.textContent =
+            "ERROR";
+
+
+        questionElement.textContent =
+            "Unable to generate the next question. Please try again.";
+
+
+        answerButton.style.display =
+            "none";
+
+
+        nextButton.style.display =
+            "none";
+
+
+        alert(
+            `AI Interview failed: ${error.message}`
+        );
+    }
+}
+
+
+/* =========================================================
+   TEXT-TO-SPEECH
+========================================================= */
+
+function speakInterviewQuestion(
+    question
+) {
+
+    if (
+        !question ||
+        !("speechSynthesis" in window)
+    ) {
+        return;
+    }
+
+
+    window.speechSynthesis.cancel();
+
+
+    const utterance =
+        new SpeechSynthesisUtterance(
+            question
+        );
+
+
+    utterance.lang =
+        getInterviewLanguage();
+
+
+    utterance.rate =
+        0.9;
+
+
+    utterance.pitch =
+        1;
+
+
+    window.speechSynthesis.speak(
+        utterance
+    );
+}
+
+
+/* =========================================================
+   VOICE ANSWER
+========================================================= */
+
+function answerInterviewByVoice() {
+
+    const SpeechRecognition =
+        window.SpeechRecognition ||
+        window.webkitSpeechRecognition;
+
+
+    if (!SpeechRecognition) {
+
+        alert(
+            "Voice recognition is not supported in this browser. Please type the answer."
+        );
+
+        return;
+    }
+
+
+    /* Stop previous interview recognition */
+    if (
+        tedkraftInterviewState.recognition
+    ) {
+
+        try {
+            tedkraftInterviewState.recognition.stop();
+        } catch (e) {}
+    }
+
+
+    const recognition =
+        new SpeechRecognition();
+
+
+    tedkraftInterviewState.recognition =
+        recognition;
+
+
+    recognition.lang =
+        getInterviewLanguage();
+
+
+    recognition.interimResults =
+        false;
+
+
+    recognition.continuous =
+        false;
+
+
+    const answerElement =
+        document.getElementById(
+            "interviewAnswer"
+        );
+
+    const answerStatus =
+        document.getElementById(
+            "interviewAnswerStatus"
+        );
+
+
+    answerStatus.textContent =
+        "LISTENING...";
+
+
+    answerElement.textContent =
+        "Listening...";
+
+
+    recognition.start();
+
+
+    recognition.onresult =
+        function (event) {
+
+            const transcript =
+                event.results[0][0].transcript.trim();
+
+
+            answerElement.textContent =
+                transcript;
+
+
+            answerStatus.textContent =
+                "CAPTURED";
+
+        };
+
+
+    recognition.onerror =
+        function (event) {
+
+            console.error(
+                "Interview speech recognition error:",
+                event.error
+            );
+
+
+            answerStatus.textContent =
+                "ERROR";
+
+
+            answerElement.textContent =
+                "Please type your answer or try the microphone again.";
+        };
+
+
+    recognition.onend =
+        function () {
+
+            if (
+                answerStatus.textContent ===
+                "LISTENING..."
+            ) {
+
+                answerStatus.textContent =
+                    "WAITING";
+            }
+        };
+}
+
+
+/* =========================================================
+   SUBMIT ANSWER
+========================================================= */
+
+async function submitInterviewAnswer() {
+
+    if (
+        !tedkraftInterviewState.active
+    ) {
+        return;
+    }
+
+
+    const answerElement =
+        document.getElementById(
+            "interviewAnswer"
+        );
+
+    const answerStatus =
+        document.getElementById(
+            "interviewAnswerStatus"
+        );
+
+
+    const answer =
+        answerElement?.textContent
+            ?.trim() || "";
+
+
+    if (
+        !answer ||
+        answer ===
+        "Tap ANSWER BY VOICE or type your answer here..."
+    ) {
+
+        alert(
+            "Please provide an answer first."
+        );
+
+        return;
+    }
+
+
+    answerStatus.textContent =
+        "PROCESSING...";
+
+
+    /* =============================================
+       SAVE THIS Q&A
+    ============================================= */
+
+    tedkraftInterviewState.conversation.push({
+
+        question:
+            tedkraftInterviewState.currentQuestion,
+
+        field:
+            tedkraftInterviewState.currentField,
+
+        answer:
+            answer
+
+    });
+
+
+    /* =============================================
+       CHECK MAX QUESTIONS
+    ============================================= */
+
+    if (
+        tedkraftInterviewState.questionCount >=
+        tedkraftInterviewState.maxQuestions
+    ) {
+
+        /*
+           We still send the answer to Gemini so
+           the latest facts are extracted. Gemini
+           can then mark the interview complete.
+        */
+    }
+
+
+    answerElement.textContent =
+        "Processing your answer...";
+
+
+    const nextButton =
+        document.getElementById(
+            "nextInterviewBtn"
+        );
+
+    if (nextButton) {
+
+        nextButton.disabled =
+            true;
+    }
+
+
+    await requestNextInterviewQuestion(
+        answer
+    );
+
+
+    if (nextButton) {
+
+        nextButton.disabled =
+            false;
+    }
+}
+
+
+/* =========================================================
+   INITIALISE INTERVIEWER
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        setupInterviewVisibility();
+
+    }
+);
+
+/* =========================================================
+   TEDKRAFT 4-STEP PRODUCT STUDIO NAVIGATION
+========================================================= */
+
+let currentStudioStep = 1;
+
+
+/* =========================================================
+   SHOW ONLY THE CURRENT STUDIO STEP
+========================================================= */
+
+function showStudioStep(step) {
+
+    currentStudioStep = step;
+
+    const voicePanel =
+        document.getElementById("productVoicePanel");
+
+    const photoPanel =
+        document.getElementById("productPhotoPanel");
+
+    const aiWorkspace =
+        document.getElementById("aiWorkspace");
+
+    const interview =
+        document.getElementById("aiInterview");
+
+    const catalogue =
+        document.getElementById("cataloguePanel");
+
+    const price =
+        document.getElementById("price");
+
+    const nextButton =
+        document.getElementById("studioNextBtn");
+
+    const backButton =
+        document.getElementById("studioBackBtn");
+
+    const stepStatus =
+        document.getElementById("studioStepStatus");
+
+    const catalogueHeader =
+        document.getElementById("catalogueHeader");
+
+
+    /* =========================================
+       RESET VISIBILITY
+    ========================================= */
+
+    if (voicePanel) {
+        voicePanel.style.display = "none";
+    }
+
+    if (photoPanel) {
+        photoPanel.style.display = "none";
+    }
+
+    if (aiWorkspace) {
+        aiWorkspace.style.display = "none";
+    }
+
+    if (interview) {
+        interview.style.display = "none";
+    }
+
+    if (catalogue) {
+        catalogue.style.display = "none";
+    }
+
+    if (price) {
+        price.style.display = "none";
+    }
+
+    if (catalogueHeader) {
+        catalogueHeader.style.display = "none";
+    }
+
+
+    /* =========================================
+       STEP 1 — PRODUCT INPUT
+       VOICE + PHOTO TOGETHER
+    ========================================= */
+
+    if (step === 1) {
+
+        if (voicePanel) {
+            voicePanel.style.display = "block";
+        }
+
+        if (photoPanel) {
+            photoPanel.style.display = "block";
+        }
+
+        if (nextButton) {
+            nextButton.style.display = "inline-flex";
+            nextButton.disabled = false;
+            nextButton.textContent =
+                "ANALYSE PRODUCT →";
+        }
+
+        if (backButton) {
+            backButton.style.display = "none";
+        }
+
+        if (stepStatus) {
+            stepStatus.textContent =
+                "STEP 1 OF 4";
+        }
+    }
+
+
+    /* =========================================
+       STEP 2 — AI INTERVIEW
+    ========================================= */
+
+    if (step === 2) {
+
+        if (aiWorkspace) {
+            aiWorkspace.style.display = "block";
+        }
+
+        if (interview) {
+            interview.style.display = "block";
+        }
+
+        if (nextButton) {
+            nextButton.style.display = "inline-flex";
+            nextButton.disabled = false;
+            nextButton.textContent =
+                "CONTINUE TO CATALOGUE →";
+        }
+
+        if (backButton) {
+            backButton.style.display = "inline-flex";
+        }
+
+        if (stepStatus) {
+            stepStatus.textContent =
+                "STEP 2 OF 4";
+        }
+    }
+
+
+    /* =========================================
+       STEP 3 — CATALOGUE
+    ========================================= */
+
+    if (step === 3) {
+
+        if (aiWorkspace) {
+            aiWorkspace.style.display = "block";
+        }
+
+        if (catalogue) {
+            catalogue.style.display = "grid";
+        }
+
+        if (catalogueHeader) {
+            catalogueHeader.style.display = "flex";
+        }
+
+        if (nextButton) {
+            nextButton.style.display = "inline-flex";
+            nextButton.disabled = false;
+            nextButton.textContent =
+                "CONTINUE TO FAIR PRICE →";
+        }
+
+        if (backButton) {
+            backButton.style.display = "inline-flex";
+        }
+
+        if (stepStatus) {
+            stepStatus.textContent =
+                "STEP 3 OF 4";
+        }
+    }
+
+
+    /* =========================================
+       STEP 4 — FAIR PRICE
+    ========================================= */
+
+    if (step === 4) {
+
+        if (aiWorkspace) {
+            aiWorkspace.style.display = "block";
+        }
+
+        if (price) {
+            price.style.display = "block";
+        }
+
+        if (nextButton) {
+            nextButton.style.display = "inline-flex";
+            nextButton.disabled = false;
+            nextButton.textContent =
+                "FINISH";
+        }
+
+        if (backButton) {
+            backButton.style.display = "inline-flex";
+        }
+
+        if (stepStatus) {
+            stepStatus.textContent =
+                "STEP 4 OF 4";
+        }
+
+        /*
+           Use the existing Fair Price function
+           to prepare the calculator.
+        */
+        if (typeof showPrice === "function") {
+            showPrice();
+        }
+    }
+
+
+    /* =========================================
+       UPDATE TOP PROGRESS BAR
+    ========================================= */
+
+    const progressSteps =
+        document.querySelectorAll(
+            ".studio-step[data-step]"
+        );
+
+    progressSteps.forEach(
+        stepElement => {
+
+            const stepNumber =
+                Number(
+                    stepElement.dataset.step
+                );
+
+            stepElement.classList.toggle(
+                "active",
+                stepNumber === step
+            );
+        }
+    );
+}
+
+
+/* =========================================================
+   NEXT BUTTON
+========================================================= */
+
+async function handleStudioNext() {
+
+    /* =========================================
+       STEP 1 → GENERATE CATALOGUE
+    ========================================= */
+
+    if (currentStudioStep === 1) {
+
+        const voiceOutput =
+            document.getElementById(
+                "voiceOutput"
+            );
+
+        const imageInput =
+            document.getElementById(
+                "imageInput"
+            );
+
+
+        const spokenText =
+            voiceOutput?.textContent
+                ?.trim() || "";
+
+
+        const hasImage =
+            imageInput &&
+            imageInput.files &&
+            imageInput.files.length > 0;
+
+
+        if (
+            !spokenText &&
+            !hasImage
+        ) {
+
+            alert(
+                "Please describe your product or add a photo first."
+            );
+
+            return;
+        }
+
+
+        const nextButton =
+            document.getElementById(
+                "studioNextBtn"
+            );
+
+
+        if (nextButton) {
+
+            nextButton.disabled = true;
+
+            nextButton.textContent =
+                "ANALYSING...";
+        }
+
+
+        try {
+
+            /*
+               Use your EXISTING working
+               Gemini catalogue function.
+            */
+
+            await generateCatalogue();
+
+
+            const status =
+                document.getElementById(
+                    "status"
+                )?.textContent
+                    ?.trim()
+                    .toUpperCase() || "";
+
+
+            if (status === "READY") {
+
+                showStudioStep(2);
+
+            } else {
+
+                if (nextButton) {
+
+                    nextButton.disabled = false;
+
+                    nextButton.textContent =
+                        "ANALYSE PRODUCT →";
+                }
+            }
+
+        } catch (error) {
+
+            console.error(
+                "Studio catalogue generation error:",
+                error
+            );
+
+
+            if (nextButton) {
+
+                nextButton.disabled = false;
+
+                nextButton.textContent =
+                    "ANALYSE PRODUCT →";
+            }
+        }
+
+
+        return;
+    }
+
+
+    /* =========================================
+       STEP 2 → CATALOGUE
+    ========================================= */
+
+    if (currentStudioStep === 2) {
+
+        const interviewStatus =
+            document.getElementById(
+                "interviewStatus"
+            )?.textContent
+                ?.trim()
+                .toUpperCase() || "";
+
+
+        const interviewComplete =
+            document.getElementById(
+                "interviewComplete"
+            );
+
+
+        const completeVisible =
+            interviewComplete &&
+            interviewComplete.style.display !==
+                "none";
+
+
+        if (
+            interviewStatus !== "COMPLETE" &&
+            !completeVisible
+        ) {
+
+            alert(
+                "Please complete the AI Interview first."
+            );
+
+            return;
+        }
+
+
+        showStudioStep(3);
+
+        return;
+    }
+
+
+    /* =========================================
+       STEP 3 → FAIR PRICE
+    ========================================= */
+
+    if (currentStudioStep === 3) {
+
+        showStudioStep(4);
+
+        return;
+    }
+
+
+    /* =========================================
+       STEP 4 → FINISH
+    ========================================= */
+
+    if (currentStudioStep === 4) {
+
+        alert(
+            "Product creation completed."
+        );
+
+        return;
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON
+========================================================= */
+
+function handleStudioBack() {
+
+    if (currentStudioStep <= 1) {
+        return;
+    }
+
+    showStudioStep(
+        currentStudioStep - 1
+    );
+}
+
+
+/* =========================================================
+   INITIALISE 4-STEP STUDIO
+========================================================= */
+
+document.addEventListener(
+    "DOMContentLoaded",
+    () => {
+
+        const nextButton =
+            document.getElementById(
+                "studioNextBtn"
+            );
+
+        const backButton =
+            document.getElementById(
+                "studioBackBtn"
+            );
+
+
+        if (nextButton) {
+
+            nextButton.addEventListener(
+                "click",
+                handleStudioNext
+            );
+        }
+
+
+        if (backButton) {
+
+            backButton.addEventListener(
+                "click",
+                handleStudioBack
+            );
+        }
+
+
+        /*
+           Always start a new page load
+           at Product Input.
+        */
+
+        showStudioStep(1);
+    }
+);
