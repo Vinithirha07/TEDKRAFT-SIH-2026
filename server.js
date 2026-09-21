@@ -5,6 +5,32 @@ const fs = require("fs");
 const path = require("path");
 
 const app = express();
+app.use((req, res, next) => {
+    const origin = req.headers.origin;
+
+    if (
+        origin === "http://localhost:3000" ||
+        (origin && origin.endsWith(".netlify.app"))
+    ) {
+        res.setHeader("Access-Control-Allow-Origin", origin);
+    }
+
+    res.setHeader(
+        "Access-Control-Allow-Methods",
+        "GET,POST,PUT,DELETE,OPTIONS"
+    );
+
+    res.setHeader(
+        "Access-Control-Allow-Headers",
+        "Content-Type"
+    );
+
+    if (req.method === "OPTIONS") {
+        return res.sendStatus(204);
+    }
+
+    next();
+});
 
 // Configure multer for temporary file uploads
 const upload = multer({

@@ -1,3 +1,5 @@
+const API_BASE_URL = "https://tedkraft-sih-2026-ub30.onrender.com";
+
 /* =========================================================
    TEDKRAFT JAVASCRIPT
    ORIGINAL FUNCTIONS + LANGUAGE SWITCHING ONLY
@@ -2343,7 +2345,7 @@ async function generateCatalogue() {
     }
 
     try {
-        const response = await fetch("/api/generate-catalogue", {
+        const response = await fetch(`${API_BASE_URL}/api/generate-catalogue`, {
             method: "POST",
             body: formData
         });
@@ -4704,8 +4706,8 @@ async function requestNextInterviewQuestion(
 
 
         const response =
-            await fetch(
-                "/api/interview",
+           await fetch(
+    `${API_BASE_URL}/api/interview`,
                 {
                     method: "POST",
 
